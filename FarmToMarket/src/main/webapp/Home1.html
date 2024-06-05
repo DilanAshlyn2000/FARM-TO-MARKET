@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Sign Up</title>
+  <style>
+    
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* font-family: Apple Chancery, cursive; */
+
+      
+      overflow: hidden;
+      
+    }
+html {
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+    header {
+      background-color: #333;
+      color: #fff;
+    }
+
+    nav {
+      padding: 0px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      width: 251px;
+      position: relative;
+    left: -220px;
+    }
+
+    .login-signup {
+      display: flex;
+      align-items: center;
+      position: relative;
+    left: 86%;
+    }
+
+    .login-signup a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .login-signup .login {
+      margin-right: 10px;
+    }
+
+    .signup {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .signup:hover {
+      background-color: #45a049;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .header1{
+      background-color: white;
+      color: black;
+    }
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-right: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: olive;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #000;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+ .content1{
+    color: white;
+    position: absolute;
+    top: 180px;
+    left: 28px;
+    width: 603px;
+    font-size: large;
+   background-color:rgba(0, 21, 14, 0.2);
+    line-height: 1.3;
+ }
+ .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white; /* Blue color */
+            color:45a049; /* White text color */
+            text-decoration: none; /* Remove default underline */
+            border: none; /* Remove default button border */
+            border-radius: 5px; /* Add some border radius for rounded corners */
+            cursor: pointer; /* Add pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition for background color change */
+        }
+        fieldset{
+        font-family: Arial, sans-serif;
+          /* font-family:  Apple Chancery, cursive; */
+            top: 132px;
+    position: absolute;
+    height: 430px;
+    width: 330px;
+    text-align: center;
+    color: white;
+    background:
+  /*   rgba(226, 252, 133, 0.2); */
+     rgb(132 210 110 / 50%);  
+    right: 71px;
+}
+    .h2{
+        position: absolute;
+        top:297px;
+        color:white;
+    }    
+
+    .video{
+        width: 1058px;
+    margin: 0 196px;
+    }
+    
+    .circle-container {
+     display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 51px;
+    top: 74px
+    }
+
+   
+
+     .circle {
+      width: 105px;
+    height: 83px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: black;
+    margin: 10px;
+    text-align: center;
+    background-color: white;
+    }
+    .circle:hover {
+            background-color:rgba(0, 21, 14, 0.2);
+            color: white;
+        }
+    .text1{
+    width: 757px;
+    left: 589px;
+    position: relative;
+    text-align: justify;
+    color:grey;
+}
+    .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    .button3 {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #808000; /* Olive green */
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            border: 2px solid #808000; /* Olive green border */
+            transition: background-color 0.3s, color 0.3s;
+        }
+.button3:hover {
+            background-color: #808000; /* Olive green */
+            color: white;
+        }
+     .text4{
+    font-family:  cursive;
+    text-align: center;
+    font-family: bold;
+    font-size:30px;
+    }
+      img.img3{
+    height: 307px;
+    width: 516px;
+    position: absolute;
+    left: -536px;
+}
+     .text6{
+    width: 1000px;
+    color: olive-green;
+    color: #746d6d;
+   text-align:center;
+   padding: 0 205px;
+    }
+     .cards {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: stretch;
+  grid-template-columns: auto auto auto;
+  
+  padding: 100px;
+  }
+  .card {
+    position: relative;
+    flex: 0 0 200px;
+    margin: 0px;
+    padding: 20px;
+    top: 35px;
+    left:100px;
+    border: 1px black;
+    box-shadow: -44px 26px 55px 0px rgba(0,0,0,0.22),0px 5px 14px 0px rgba(0,0,0,0.18);
+    /* box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3); */
+    background:white;
+   /*   rgba(80, 200, 120, 0.2); */
+    } 
+  .card img {
+    max-width: 100%;
+  }
+  .card .text {
+    padding: 0 20px 20px;
+    color:light-grey;
+    
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+     
+      <div class="login-signup">
+        <a href="LoginUser.html" class="login">Login</a>
+        <a href="RegistrationUser.html">
+        <button class="signup">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+  <header class="header1">
+    <nav>
+      <a href="#" class="logo">  <img src="Screenshot (188).png" alt="Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="DisplayProductUserSide">Market</a></li>
+        <li class="dropdown">
+          <a href="#">About Us</a>
+          <div class="dropdown-content">
+            <a href="#">Our Team</a>
+            <a href="#">Our Company</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <img src="q1.jpg" alt="image" width="100%" height="450" class="img2" > 
+<!--   <div class="content1">
+    
+    <h2> OUR JOURNEY SPANS FROM THE LUSH GREEN FIELDS, TO THE VIBRANT ENERGY OF BUSTLING MARKETS.</h2>
+   
+  </div> -->
+<fieldset>
+<h3>CATEGORIES</h3>
+ <div class="circle-container">
+    <div class="circle">VEGETABLES</div>
+    <div class="circle">FRUITS</div>
+    <div class="circle">FLOWERS</div>
+    <div class="circle">NUTS & GRAINS</div>
+  </div>
+<div class="h2">
+    <h5>CAN'T FIND THE PRODUCT YOU ARE LOOKING FOR?
+</h5>
+<a href="https://wa.me/qr/KQNBIRWEWRCVC1" class="button">TALK TO US</a>
+</div></fieldset>
+<div class="text4">
+<h2><font color="#6f6e6c">O</font>
+            <font color="">U</font>
+            <font color="#6f6e6c">R</font>
+            <font color="#74ab4f">S</font>
+            <font color="#74ab4f">O</font>
+            <font color="#74ab4f">L</font>
+            <font color="#74ab4f">U</font>
+            <font color="#74ab4f">T</font>
+            <font color="#74ab4f">I</font>
+            <font color="#74ab4f">O</font>
+            <font color="#74ab4f">N</font></h2>
+            </div>
+<div class="text1">
+
+<img src="b1.webp" alt="image" class="img3" > 
+Welcome to Agri Marketplace, where we cultivate connections between farmers and consumers, fostering a sustainable and thriving agricultural community. 
+
+At Agri Marketplace, we believe in the power of local agriculture to nourish communities, promote environmental stewardship, and support the livelihoods of farmers. Our platform serves as a bridge, linking producers directly with consumers, restaurants, and businesses, thereby eliminating unnecessary middlemen and ensuring fair compensation for the hard work of our farmers.</br></br>
+
+We are committed to promoting sustainable farming practices and empowering farmers with the tools and resources they need to thrive in today's market. By prioritizing local and regional partnerships, we aim to strengthen communities, reduce the carbon footprint of food production, and promote economic resilience in rural areas.
+
+Join us in supporting a vibrant agricultural ecosystem. Together, we can build a future where everyone has access to nutritious, locally grown food, and where farmers are celebrated as the stewards of our land and heritage. Thank you for choosing Agri Marketplace as your trusted partner in agriculture.
+ <div class="button-container" >
+            <a href="marketplace.html" class="button3">Explore the Marketplace</a>
+            <a href="about.html" class="button3">Learn more about us</a>
+        </div>
+</div>
+<div class="text4">
+<h2><font color="#6f6e6c">OUR</font>
+            <font color="#74ab4f">VALUE</font>
+            <font color="#6f6e6c">PROPOSITION</font></h2>
+            </div>
+            <div class="text6">
+         <center>   <h3>Step into a world where the fields stretch as far as the eye can see, and the aroma of ripe produce fills the air. Here, at the intersection of tradition and innovation, we embark on a journey from farm to market, guided by a reverence for nature and a commitment to quality.</h3></center>
+           </div>
+
+
+
+
+<video autoplay muted loop id="myVideo" class="video"> 
+    <source src="Recording 2024-06-03 231923.mp4" type="video/mp4">
+   </video>
+   <main class="cards">
+       
+        </article>
+        <article class="card">
+          
+          <div class="text">
+            <img src="Screenshot (198).png" alt="image"  class="img4"  > 
+            <h3 style="color:black">TRANSPARENCY</h3>
+                
+
+                   <p>Direct transactions between farmers and industry/retail</p>
+                    
+            </div>
+        </article>
+        <article class="card">
+          
+          <div class="text">
+            <img src="Screenshot (200).png" alt="image"  class="img4"  > 
+            <h3 style="color:black">FAIRTRADE</h3>
+           
+             <p> Redistribution of value in food supply chain</p>
+         
+          </div>
+        </article>
+        <article class="card">
+        
+          <div class="text">
+            <img src="Screenshot (202).png" alt="image"  class="img4"  > 
+            <h3 style="color:black">USER FRIENDLY</h3>
+           
+
+            <p>Reduce costs to buyers without losing reliability</p>
+          </div>
+        </article>   
+        <article class="card">
+        
+          <div class="text">
+            <img src="Screenshot (199).png" alt="image"  class="img4"  > 
+            <h3 style="color:black">FOOD TRACEABILITY</h3>
+     
+      <p>Crop reliability through supply chain traceability (coming soon)</p>
+          </div>
+
+</body>
+</html>
