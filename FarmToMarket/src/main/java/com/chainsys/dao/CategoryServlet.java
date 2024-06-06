@@ -49,6 +49,8 @@ public class CategoryServlet extends HttpServlet {
 		{
 			e.printStackTrace();
 		}
+		DisplayCategory obj=new DisplayCategory();
+		obj.doGet(request, response);
 	}
 
 	/**

@@ -111,9 +111,16 @@ position: absolute;
     </table>
     <div class="search">
 	<form action="SearchUserServlet" method="get">
-			<label for="name">Type:</label><br>
+	<label for="type">Type:</label><br>
+<select id="type" name="type" required autofocus>
+  <option value="users">USER</option>
+  <option value="farmers">FARMER</option>
+  <option value="others">ADMIN</option>
+</select>
+<input type="submit" value="SEARCH" class="button2">
+			<!-- <label for="name">Type:</label><br>
 			 <input type="text" id="name" name="type" placeholder="Enter type" required autofocus>
-				<input type="submit" value="SEARCH" class="button2">
+				<input type="submit" value="SEARCH" class="button2"> -->
 				</div>
 				
     

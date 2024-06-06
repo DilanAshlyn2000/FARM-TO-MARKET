@@ -7,12 +7,16 @@
 <style>
 
 fieldset {
-      max-width: 300px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+     max-width: 309px;
+    margin: 0px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    position: absolute;
+    left: 39%;
+    top: 36%;
+    width: 300px;
     }
 
     form {
@@ -47,9 +51,131 @@ fieldset {
     input[type="submit"]:hover {
       background-color: #0056b3;
     }
+     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* font-family: Apple Chancery, cursive; */
+
+      
+      overflow: hidden;
+      
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+    }
+
+    nav {
+      padding: 0px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      width: 251px;
+      /* position: relative;
+    left: -180px; */
+    }
+
+    .login-signup {
+      display: flex;
+      align-items: center;
+      position: relative;
+    left: 86%;
+    }
+
+    .login-signup a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .login-signup .login {
+      margin-right: 10px;
+    }
+
+    .signup {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .signup:hover {
+      background-color: #45a049;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .header1{
+      background-color: white;
+      color: black;
+    }
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-right: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: olive;
+    }
+  
   </style>
 
+
+
+
 <body>
+
+<header>
+    <nav>
+     
+      <div class="login-signup">
+       
+       <!--  <a href="LogoutServlet" method="get"></a> -->
+        <button class="signup">LOGOUT</button>
+      </div>
+    </nav>
+  </header>
+  <header class="header1">
+    <nav>
+      <a href="#" class="logo">  <img src="Screenshot (188).png" alt="Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="AdminHome.html">Home</a></li>
+        <li><a href="DisplayUserServlet">View Details</a></li>
+            <li><a href="Category.html">Add Category</a></li>
+           <li> <a href="DisplayCategory">View Category</a></li>
+           <li> <a href="DisplayProduct">View Products</a></li>
+       
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
 <fieldset>
 <form action="CategoryServlet" method="get">
 <label for="category">CATEGORY:</label><br> 

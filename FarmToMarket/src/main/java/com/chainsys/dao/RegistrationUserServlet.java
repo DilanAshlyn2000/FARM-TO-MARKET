@@ -59,16 +59,37 @@ public class RegistrationUserServlet extends HttpServlet {
 		{
 			e.printStackTrace();
 		}
+	
+	response.sendRedirect("LoginUser.html");
 	}
-	
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String password1=null;
+		FarmerDao1 farmer=new FarmerDao1();
+		String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        //HttpSession session=request.getSession();
+        try {
+        	 password1 = farmer.loginUser1(email);
+        	    if (password.equals(password1)) {
+        	    	//session.setAttribute("email", email);
+        	        if (password.equals("Admin#01")) {
+        	            request.getRequestDispatcher("AdminHome.html").forward(request, response);
+        	        } else {
+        	            request.getRequestDispatcher("home.html").forward(request, response);
+        	        }
+        	    } else {
+        	        request.getRequestDispatcher("RegistrationUser.html").forward(request, response);
+        	    }
+        	 
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+      
+	
 	}
 
 }

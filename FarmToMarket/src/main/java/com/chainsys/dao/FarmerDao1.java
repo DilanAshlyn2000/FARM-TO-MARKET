@@ -135,13 +135,17 @@ public class FarmerDao1 implements FarmerDao {
 
 	}
 
-	public List<ProductPojo> retriveProductDetails(String email) throws ClassNotFoundException, SQLException {
+	
+	 // public List<ProductPojo> retriveProductDetails(String email) throws ClassNotFoundException, SQLException {
+	 
+	public List<ProductPojo> retriveProductDetails() throws ClassNotFoundException, SQLException {
+		
 		ArrayList<ProductPojo> list = new ArrayList<>();
 		Connection connection = Connect1.getConnection();
-		String select = "select product_id, product_name,product_image, farmer_id, description, price, stock_quantity, category_id from Products where email=?";
-		
+	//	String select = "select product_id, product_name,product_image, farmer_id, description, price, stock_quantity, category_id from Products where email=?";
+		String select = "select product_id, product_name,product_image, farmer_id, description, price, stock_quantity, category_id from Products";
 		PreparedStatement prepareStatement = connection.prepareStatement(select);
-		prepareStatement.setString(1,email);
+	//	prepareStatement.setString(1,email);
 		ResultSet resultSet = prepareStatement.executeQuery();
 		while (resultSet.next()) {
 			int product_id = resultSet.getInt(1);
