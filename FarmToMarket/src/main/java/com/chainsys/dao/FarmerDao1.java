@@ -31,19 +31,35 @@ public class FarmerDao1 implements FarmerDao {
 
 	}
 
-	public String loginUser1(String email) throws ClassNotFoundException, SQLException {
+	/*
+	 * public UserPojo loginUser1(String email) throws ClassNotFoundException,
+	 * SQLException { Connection connection = Connect1.getConnection(); String
+	 * password = null; String loginQuery =
+	 * "SELECT password,id FROM Users WHERE email = ?"; PreparedStatement
+	 * preparedStatement = connection.prepareStatement(loginQuery);
+	 * preparedStatement.setString(1, email); ResultSet resultSet =
+	 * preparedStatement.executeQuery(); UserPojo user = new UserPojo(); while
+	 * (resultSet.next()) { user.setId(resultSet.getInt(2));
+	 * user.setPassword(resultSet.getString(1));
+	 * 
+	 * } return user; }
+	 */
+	public UserPojo loginUser1(String email) throws ClassNotFoundException, SQLException {
 		Connection connection = Connect1.getConnection();
-		String password = null;
-		String loginQuery = "SELECT password FROM Users WHERE email = ?";
+		
+		String loginQuery = "SELECT password,id,type FROM Users WHERE email = ?";
 		PreparedStatement preparedStatement = connection.prepareStatement(loginQuery);
 		preparedStatement.setString(1, email);
-		/* preparedStatement.setString(2, password); */
 		ResultSet resultSet = preparedStatement.executeQuery();
+		UserPojo user = new UserPojo();
 		while (resultSet.next()) {
-			password = resultSet.getString(1);
+			user.setId(resultSet.getInt(2));
+			user.setPassword(resultSet.getString(1));
+			user.setType(resultSet.getString(3));
 		}
-		return password;
+		return user;
 	}
+
 
 	public List<UserPojo> retriveDetails() throws ClassNotFoundException, SQLException {
 		ArrayList<UserPojo> list = new ArrayList<>();
@@ -135,22 +151,52 @@ public class FarmerDao1 implements FarmerDao {
 
 	}
 
-	
-	 // public List<ProductPojo> retriveProductDetails(String email) throws ClassNotFoundException, SQLException {
-	 
-	public List<ProductPojo> retriveProductDetails() throws ClassNotFoundException, SQLException {
-		
+	// public List<ProductPojo> retriveProductDetails(String email) throws
+	// ClassNotFoundException, SQLException {
+
+	public List<ProductPojo> retriveProductDetails(int id) throws ClassNotFoundException, SQLException {
+
 		ArrayList<ProductPojo> list = new ArrayList<>();
 		Connection connection = Connect1.getConnection();
-	//	String select = "select product_id, product_name,product_image, farmer_id, description, price, stock_quantity, category_id from Products where email=?";
-		String select = "select product_id, product_name,product_image, farmer_id, description, price, stock_quantity, category_id from Products";
+		String select = "select product_id, product_name,product_image, farmer_id, description, price, stock_quantity, category_id from Products where farmer_id=?";
 		PreparedStatement prepareStatement = connection.prepareStatement(select);
-	//	prepareStatement.setString(1,email);
+		prepareStatement.setInt(1, id);
 		ResultSet resultSet = prepareStatement.executeQuery();
 		while (resultSet.next()) {
 			int product_id = resultSet.getInt(1);
 			String product_name = resultSet.getString(2);
-			byte [] product_image=resultSet.getBytes(3);
+			byte[] product_image = resultSet.getBytes(3);
+			int farmer_id = resultSet.getInt(4);
+			String description = resultSet.getString(5);
+			float price = resultSet.getFloat(6);
+			int stock_quantity = resultSet.getInt(7);
+			int category_id = resultSet.getInt(8);
+			ProductPojo details = new ProductPojo();
+			details.setProductId(product_id);
+			details.setProductName(product_name);
+			details.setProduct_image(product_image);
+			details.setFarmerId(farmer_id);
+			details.setDescription(description);
+			details.setPrice(price);
+			details.setStockQuantity(stock_quantity);
+			details.setCategoryId(category_id);
+			list.add(details);
+		}
+		connection.close();
+		return list;
+	}
+
+	public List<ProductPojo> retriveProductDetails() throws ClassNotFoundException, SQLException {
+
+		ArrayList<ProductPojo> list = new ArrayList<>();
+		Connection connection = Connect1.getConnection();
+		String select = "select product_id, product_name,product_image, farmer_id, description, price, stock_quantity, category_id from Products ";
+		PreparedStatement prepareStatement = connection.prepareStatement(select);
+		ResultSet resultSet = prepareStatement.executeQuery();
+		while (resultSet.next()) {
+			int product_id = resultSet.getInt(1);
+			String product_name = resultSet.getString(2);
+			byte[] product_image = resultSet.getBytes(3);
 			int farmer_id = resultSet.getInt(4);
 			String description = resultSet.getString(5);
 			float price = resultSet.getFloat(6);
