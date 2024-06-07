@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.chainsys.model.CartPojo;
 import com.chainsys.model.FarmerPojo;
 import com.chainsys.model.ProductPojo;
 
@@ -269,5 +270,17 @@ public class FarmerDao1 implements FarmerDao {
 		connection.close();
 
 	}
+	 public void insertCart(int customerId,int productId,int quantity,float total) throws ClassNotFoundException, SQLException {
+		 Connection connection = Connect1.getConnection();
+		 String sql = "INSERT INTO Cart (customer_id, product_id, quantity,total) VALUES (?, ?, ?,?)";
+	            PreparedStatement statement = connection.prepareStatement(sql);
+	            statement.setInt(1, customerId);
+	                statement.setInt(2, productId);
+	                statement.setInt(3, quantity);
+	                statement.setFloat(4, total);
+	                
+	                statement.executeUpdate();
+	            }
+	
 
-}
+	 }
