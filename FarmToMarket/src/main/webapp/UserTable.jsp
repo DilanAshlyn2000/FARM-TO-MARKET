@@ -220,18 +220,18 @@ position: absolute;
 	</form> --%>
 	
 	  </tr>
-    <%
+        <%
        }
-        %>  
+    %>  
     </table>
     <div class="search">
 	<form action="SearchUserServlet" method="get">
 	<label for="type">Type:</label><br>
-<select id="type" name="type" required autofocus>
+  <select id="type" name="type" required autofocus>
   <option value="users">USER</option>
   <option value="farmers">FARMER</option>
   <option value="others">ADMIN</option>
-</select>
+  </select>
 <input type="submit" value="SEARCH" class="button2">
 			<!-- <label for="name">Type:</label><br>
 			 <input type="text" id="name" name="type" placeholder="Enter type" required autofocus>

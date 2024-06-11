@@ -57,4 +57,5 @@ public class ProductPojo {
 	public void setProduct_image(byte[] product_image) {
 		this.product_image = product_image;
 	}
+
 }

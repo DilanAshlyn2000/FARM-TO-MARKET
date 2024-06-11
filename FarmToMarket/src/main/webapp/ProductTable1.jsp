@@ -96,7 +96,7 @@ body {
 		<h1>PRODUCTS DETAILS</h1>
 		<div class="card-container">
 			<%
-			List<ProductPojo> productList = (List<ProductPojo>) request.getAttribute("list");
+			List<ProductPojo> productList = (List<ProductPojo>) request.getAttribute("productList");
 			for (ProductPojo product : productList) {
 			%>
 			<div class="card">
@@ -108,44 +108,74 @@ body {
 					<h2><%=product.getProductName()%></h2>
 					
 					<p>
-						<strong>Product ID:</strong>
+						<strong>Product ID           :</strong>
 						<%=product.getProductId()%></p>
 							
 					<p>
-						<strong>Farmer ID:</strong>
+						<strong>Farmer ID            :</strong>
 						<%=product.getFarmerId()%></p>
 					<p>
 					
-						<strong>Description:</strong>
+						<strong>Description          :</strong>
 						<%=product.getDescription()%></p>
 					<p>
-						<strong>Price:</strong>
+						<strong>Price                :</strong>
 						<%=product.getPrice()%></p>
 					<p>
-						<strong>Stock Quantity:</strong>
+						<strong>Stock Quantity(in Kgs):</strong>
 						<%=product.getStockQuantity()%></p>
-					<!--  <div class="quantity-container">
-                        <label for="quantity" class="quantity-label">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-input">
-                    </div>
-                    <button class="add-to-cart">Add to Cart</button> -->
+				
 					<div class="quantity-container">
 							<label for="quantity" class="quantity-label">Quantity:</label>
 							 <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-input">
 						<input type="hidden" value="<%=product.getProductName()%>" name="productName">
 						<input type="hidden" value="<%=product.getProductId()%>" name="productId">
 						<input type="hidden" value="<%=product.getFarmerId()%>" name="farmerId">
-							<input type="hidden" value="<%=product.getPrice()%>" name="price">
+				       <input type="hidden" value="<%=product.getPrice()%>" name="price1"> 
 							<button class="CartServlet">Add to Cart</button>
 					</div>
 				</div>
 				</form>
 			</div>
-			<%
-			}
+			
+ 	<%
+   }
 			%>
-		</div>
-	</div>
+<!--  <form action="SearchProductCategory" method="get">
+            <select id="type" name="type" required autofocus>
+                <option value="1">VEGETABLES</option>
+                <option value="5">FRUITS</option>
+                <option value="6">FLOWERS</option>
+                <option value="7">GRAINS & CEREALS</option>
+            </select>
+            <input type="submit" value="SEARCH" class="button2">
+        </form> -->
+        		
+     <form action="SearchCategoryLowToHigh" method="get">
+    <% for (ProductPojo product : productList) { %>
+        <input type="hidden" value="<%= product.getPrice() %>" name="price1">
+    <% } %>
+    <select id="type" name="type" required autofocus>
+        <option value="1">VEGETABLES</option>
+        <option value="5">FRUITS</option>
+        <option value="6">FLOWERS</option>
+        <option value="7">GRAINS & CEREALS</option>
+    </select>
+    <input type="submit" value="SEARCH LOW TO HIGH" class="button2">
+</form>
+        		
+		  <form action="SearchCategoryHighToLow" method="get">
+    <% for (ProductPojo product : productList) { %>
+        <input type="hidden" value="<%= product.getPrice() %>" name="price1">
+    <% } %>
+    <select id="type" name="type" required autofocus>
+        <option value="1">VEGETABLES</option>
+        <option value="5">FRUITS</option>
+        <option value="6">FLOWERS</option>
+        <option value="7">GRAINS & CEREALS</option>
+    </select>
+    <input type="submit" value="SEARCH HIGH TO LOW" class="button2">
+</form>
 </body>
 </html>
 

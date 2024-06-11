@@ -315,6 +315,9 @@ position: absolute;
                 <td><%= product.getStockQuantity() %></td>
                 <td><%= product.getCategoryId() %></td>
                 <td>
+                <input type="hidden" value="<%=product.getProductName()%>" name="productName">
+                	<input type="hidden" value="<%=product.getPrice()%>" name="price">
+                	<input type="hidden" value="<%=product.getCategoryId()%>" name="CategoryId">
                 <%--   <td><form action="DeleteProduct" method="get">
 		<!-- Your input fields here -->
 		<input type="hidden" class="button1" value=<%=product.getProductId()%> name="id">
