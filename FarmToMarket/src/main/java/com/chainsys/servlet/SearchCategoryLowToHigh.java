@@ -68,7 +68,7 @@ public class SearchCategoryLowToHigh extends HttpServlet {
 
 	            
 	            request.setAttribute("productList", productList);
-	            request.getRequestDispatcher("MarketCategory.html").forward(request, response);
+	            request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
 		 } catch (ClassNotFoundException | SQLException | NumberFormatException e) {
 		     // Handle exceptions
 		     e.printStackTrace();

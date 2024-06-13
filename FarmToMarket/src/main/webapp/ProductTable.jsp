@@ -254,12 +254,6 @@ position: absolute;
   
 </style>
 </head>
-   
-
-
-
-
-
 <body>
 
 <header>

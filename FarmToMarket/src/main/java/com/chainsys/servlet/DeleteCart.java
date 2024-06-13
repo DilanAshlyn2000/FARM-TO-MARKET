@@ -1,6 +1,7 @@
 package com.chainsys.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -9,24 +10,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.FarmerDao1;
-import com.chainsys.model.FarmerPojo;
-import com.chainsys.model.UserPojo;
+import com.chainsys.model.CartPojo;
+import com.chainsys.model.ProductPojo;
 
 
 /**
- * Servlet implementation class DisplayFarmersServlet
+ * Servlet implementation class DeleteCart
  */
-@WebServlet("/DisplayUserServlet")
-public class DisplayUserServlet extends HttpServlet {
+@WebServlet("/DeleteCart")
+public class DeleteCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DisplayUserServlet() {
+    public DeleteCart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,18 +36,21 @@ public class DisplayUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  FarmerDao1 form=new FarmerDao1();
+		
+		  String cartId= request.getParameter("cartId");
+		  int cartId1=Integer.parseInt(cartId); 
 		 
-	      try {
-	          List<UserPojo> list = form.retriveDetails();
-	          System.out.println(list.get(0));
-	          request.setAttribute("list", list);
-	          request.getRequestDispatcher("UserTable.jsp").forward(request, response);
-	      } catch (ClassNotFoundException | SQLException e) {
-	          // TODO Auto-generated catch block
+		  try {
+			  List<CartPojo> list = form.DeleteCart(cartId1);
+			  
+	      } catch (ClassNotFoundException | SQLException e) 
+		  {
 	          e.printStackTrace();
 	      }
-		}	
-	
+		  CartView obj=new CartView();
+			obj.doGet(request, response);	
+	}
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

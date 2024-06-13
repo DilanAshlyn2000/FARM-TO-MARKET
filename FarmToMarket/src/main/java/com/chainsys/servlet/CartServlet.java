@@ -38,7 +38,8 @@ public class CartServlet extends HttpServlet {
 		int ProductId1 = Integer.parseInt(ProductId);
 		System.out.println(ProductId1);
 		
-		 String Price = request.getParameter("price"); System.out.println(Price);
+		 String Price = request.getParameter("price");
+		 System.out.println(Price);
 		 float Price1 = Float.parseFloat(Price);
 		 
 		String quantity=request.getParameter("quantity");
@@ -47,7 +48,10 @@ public class CartServlet extends HttpServlet {
 		int FarmerId1 = Integer.parseInt(FarmerId);
 		System.out.println(FarmerId1);
 		float total=quantity1*Price1;
-	    int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		 
+	
+		//System.out.println(cartId1);
+	   // int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 
 		 FarmerDao1 register=new FarmerDao1();
 			try 
@@ -58,7 +62,7 @@ public class CartServlet extends HttpServlet {
 			{
 				e.printStackTrace();
 			}
-		
+			
 	}
 		/*
 		 * int customerId = Integer.parseInt(request.getParameter("customerId")); int

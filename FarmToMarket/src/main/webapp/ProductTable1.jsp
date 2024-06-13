@@ -31,6 +31,8 @@ body {
 	display: inline-block;
 	vertical-align: top;
 	text-align: center; /* Center align content */
+	display: inline-block;
+    width: 276px;
 }
 
 .card img {
@@ -124,16 +126,18 @@ body {
 					<p>
 						<strong>Stock Quantity(in Kgs):</strong>
 						<%=product.getStockQuantity()%></p>
-				
+				<form action="CartView.java" method="get">
 					<div class="quantity-container">
 							<label for="quantity" class="quantity-label">Quantity:</label>
 							 <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-input">
 						<input type="hidden" value="<%=product.getProductName()%>" name="productName">
 						<input type="hidden" value="<%=product.getProductId()%>" name="productId">
 						<input type="hidden" value="<%=product.getFarmerId()%>" name="farmerId">
-				       <input type="hidden" value="<%=product.getPrice()%>" name="price1"> 
-							<button class="CartServlet">Add to Cart</button>
+				       <input type="hidden" value="<%=product.getPrice()%>" name="price"> 
+							<button class="#">Add to Cart</button>
+							
 					</div>
+					</form>
 				</div>
 				</form>
 			</div>

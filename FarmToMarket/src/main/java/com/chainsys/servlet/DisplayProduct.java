@@ -50,7 +50,6 @@ public class DisplayProduct extends HttpServlet {
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("ProductTable.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

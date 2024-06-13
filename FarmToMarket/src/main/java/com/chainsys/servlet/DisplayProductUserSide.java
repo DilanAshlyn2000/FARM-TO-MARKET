@@ -37,15 +37,15 @@ public class DisplayProductUserSide extends HttpServlet {
 	      try {
 	    	  HttpSession session = request.getSession(false);
 	 		 
-	 		 int id =  (int) session.getAttribute("id");
+	 		 int id = (int) session.getAttribute("id");
 	          List<ProductPojo> list = form.retriveProductDetails();
 	          request.setAttribute("productList", list);
 	          request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
 	      } catch (ClassNotFoundException | SQLException e) {
-	          // TODO Auto-generated catch block
+	         
 	          e.printStackTrace();
 	      }
-		
+	   
 	}	
 	
 
