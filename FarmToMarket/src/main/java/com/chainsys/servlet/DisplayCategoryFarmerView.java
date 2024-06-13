@@ -39,9 +39,9 @@ public class DisplayCategoryFarmerView extends HttpServlet {
 	          request.setAttribute("list", list);
 	          request.getRequestDispatcher("CategoryFarmerView2.jsp").forward(request, response);
 	      } catch (ClassNotFoundException | SQLException e) {
-	          // TODO Auto-generated catch block
+	         
 	          e.printStackTrace();
-	      }	
+	       }	
 	}
 
 	/**

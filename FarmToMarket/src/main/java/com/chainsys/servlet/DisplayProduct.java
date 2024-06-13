@@ -39,7 +39,6 @@ public class DisplayProduct extends HttpServlet {
 
 		
 		 HttpSession session = request.getSession(false);
-		 
 		 int id =  (int) session.getAttribute("id");
 		 System.out.println(id);
 		FarmerDao1 form = new FarmerDao1();

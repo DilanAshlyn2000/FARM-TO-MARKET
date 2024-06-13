@@ -34,28 +34,6 @@ public class CartView extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*
-	 * 
-	 * String ProductName=request.getParameter("ProductName"); String Price
-	 * =request.getParameter("price1"); System.out.println(Price); float Price1 =
-	 * Float.parseFloat(Price);
-	 * 
-	 * 
-	 * String quantity=request.getParameter("quantity"); int
-	 * quantity1=Integer.parseInt(quantity); float total=quantity1*Price1;
-	 * FarmerDao1 form = new FarmerDao1();
-	 * 
-	 * 
-	 * try {
-	 * 
-	 * List<ProductPojo> list = form.retriveCartDetails();
-	 * request.setAttribute("list", list);
-	 * request.getRequestDispatcher("CartView1.jsp").forward(request, response); }
-	 * catch (ClassNotFoundException | SQLException e) { // TODO Auto-generated
-	 * catch block e.printStackTrace(); }
-	 * 
-	 * }
-	 */
          HttpSession session = request.getSession(false);	 
 		 int id =  (int) session.getAttribute("id");
 		 System.out.println(id);

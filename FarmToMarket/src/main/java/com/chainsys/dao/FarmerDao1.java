@@ -32,19 +32,6 @@ public class FarmerDao1 implements FarmerDao {
 
 	}
 
-	/*
-	 * public UserPojo loginUser1(String email) throws ClassNotFoundException,
-	 * SQLException { Connection connection = Connect1.getConnection(); String
-	 * password = null; String loginQuery =
-	 * "SELECT password,id FROM Users WHERE email = ?"; PreparedStatement
-	 * preparedStatement = connection.prepareStatement(loginQuery);
-	 * preparedStatement.setString(1, email); ResultSet resultSet =
-	 * preparedStatement.executeQuery(); UserPojo user = new UserPojo(); while
-	 * (resultSet.next()) { user.setId(resultSet.getInt(2));
-	 * user.setPassword(resultSet.getString(1));
-	 * 
-	 * } return user; }
-	 */
 	public UserPojo loginUser1(String email) throws ClassNotFoundException, SQLException {
 		Connection connection = Connect1.getConnection();
 
@@ -150,9 +137,6 @@ public class FarmerDao1 implements FarmerDao {
 		pstmt.executeUpdate();
 
 	}
-
-	// public List<ProductPojo> retriveProductDetails(String email) throws
-	// ClassNotFoundException, SQLException {
 
 	public List<ProductPojo> retriveProductDetails(int id) throws ClassNotFoundException, SQLException {
 
@@ -271,50 +255,36 @@ public class FarmerDao1 implements FarmerDao {
 
 	}
 
-	/*
-	 * public void insertCart(int customerId,int productId,int quantity,float total)
-	 * throws ClassNotFoundException, SQLException { Connection connection =
-	 * Connect1.getConnection(); String sql =
-	 * "INSERT INTO Cart (customer_id, product_id, quantity,total) VALUES (?, ?, ?,?)"
-	 * ; PreparedStatement statement = connection.prepareStatement(sql);
-	 * statement.setInt(1, customerId); statement.setInt(2, productId);
-	 * statement.setInt(3, quantity); statement.setFloat(4, total);
-	 * 
-	 * statement.executeUpdate(); }
-	 */
 
 	public void insertCart(int customerId, int productId, int quantity, float total) throws ClassNotFoundException, SQLException {
 	    try (Connection connection = Connect1.getConnection();
-	         PreparedStatement selectStatement = connection.prepareStatement("SELECT * FROM Cart WHERE customer_id = ? AND product_id = ?");
-	         PreparedStatement updateStatement = connection.prepareStatement("UPDATE Cart SET quantity = ?, total = ? WHERE customer_id = ? AND product_id = ?");
-	         PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Cart (customer_id, product_id, quantity, total) VALUES (?, ?, ?, ?)")) {
-	        
-	        selectStatement.setInt(1, customerId);
-	        selectStatement.setInt(2, productId);
-	        try (ResultSet resultSet = selectStatement.executeQuery()) {
-	            if (resultSet.next()) {
-	                // Product already exists in the cart, update quantity and total
-	                int existingQuantity = resultSet.getInt("quantity");
-	                int newQuantity = existingQuantity + quantity;
-	                float newTotal = total * newQuantity; // Update total based on new quantity
+	            PreparedStatement selectStatement = connection.prepareStatement("SELECT * FROM Cart WHERE customer_id = ? AND product_id = ?");
+	            PreparedStatement updateStatement = connection.prepareStatement("UPDATE Cart SET quantity = ?, total = ?, timestamp = CURRENT_TIMESTAMP WHERE customer_id = ? AND product_id = ?");
+	            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Cart (customer_id, product_id, quantity, total, status, timestamp) VALUES (?, ?, ?, ?, 'UNPAID', CURRENT_TIMESTAMP)")) {
+	           
+	           selectStatement.setInt(1, customerId);
+	           selectStatement.setInt(2, productId);
+	           try (ResultSet resultSet = selectStatement.executeQuery()) {
+	               if (resultSet.next()) {
+	                   int existingQuantity = resultSet.getInt("quantity");
+	                   int newQuantity = existingQuantity + quantity;
+	                   float newTotal = total * newQuantity; 
+	                   updateStatement.setFloat(2, newTotal);
+	                   updateStatement.setInt(3, customerId);
+	                   updateStatement.setInt(4, productId);
+	                   updateStatement.executeUpdate();
+	               } else {
+	                   insertStatement.setInt(1, customerId);
+	                   insertStatement.setInt(2, productId);
+	                   insertStatement.setInt(3, quantity);
+	                   insertStatement.setFloat(4, total);
+	                   insertStatement.executeUpdate();
+	               }
+	           }
+	       }
+	   }
 
-	                // Update the quantity and total for the existing product in the cart
-	                updateStatement.setInt(1, newQuantity);
-	                updateStatement.setFloat(2, newTotal);
-	                updateStatement.setInt(3, customerId);
-	                updateStatement.setInt(4, productId);
-	                updateStatement.executeUpdate();
-	            } else {
-	                // Product doesn't exist in the cart, insert a new row
-	                insertStatement.setInt(1, customerId);
-	                insertStatement.setInt(2, productId);
-	                insertStatement.setInt(3, quantity);
-	                insertStatement.setFloat(4, total);
-	                insertStatement.executeUpdate();
-	            }
-	        }
-	    }
-	}
+	
 
 
 	public List<ProductPojo> searchDetails1(ProductPojo obj) throws ClassNotFoundException, SQLException {
@@ -355,13 +325,8 @@ public class FarmerDao1 implements FarmerDao {
 
 		String select = "SELECT product_id, product_name, product_image, farmer_id, description, price, stock_quantity, category_id FROM Products WHERE category_id = ? ORDER BY price ASC;";
 
-		// "SELECT product_id, product_name, product_image, farmer_id, description,
-		// price, stock_quantity, category_id FROM Products WHERE category_id = ?
-		// price=? ORDER BY price";
 		PreparedStatement prepareStatement = connection.prepareStatement(select);
 		prepareStatement.setInt(1, obj.getCategoryId());
-		// prepareStatement.setFloat(2, obj.getPrice());
-
 		ResultSet resultSet = prepareStatement.executeQuery();
 		while (resultSet.next()) {
 			int product_id = resultSet.getInt(1);
@@ -393,15 +358,9 @@ public class FarmerDao1 implements FarmerDao {
 		Connection connection = Connect1.getConnection();
 
 		String select = "SELECT product_id, product_name, product_image, farmer_id, description, price, stock_quantity, category_id FROM Products WHERE category_id = ? ORDER BY price DESC;";
-
-		// "SELECT product_id, product_name, product_image, farmer_id, description,
-		// price, stock_quantity, category_id FROM Products WHERE category_id = ?
-		// price=? ORDER BY price";
 		PreparedStatement prepareStatement = connection.prepareStatement(select);
 		prepareStatement.setInt(1, obj.getCategoryId());
-		// prepareStatement.setFloat(2, obj.getPrice());
-
-		ResultSet resultSet = prepareStatement.executeQuery();
+				ResultSet resultSet = prepareStatement.executeQuery();
 		while (resultSet.next()) {
 			int product_id = resultSet.getInt(1);
 			String product_name = resultSet.getString(2);
@@ -426,27 +385,9 @@ public class FarmerDao1 implements FarmerDao {
 		return list;
 	}
 
-	/*
-	 * public List<ProductPojo> retriveCartDetails() throws ClassNotFoundException,
-	 * SQLException { ArrayList<ProductPojo> list = new ArrayList<>(); Connection
-	 * connection = Connect1.getConnection(); String select =
-	 * "select product_name, product_image from Products "; PreparedStatement
-	 * prepareStatement = connection.prepareStatement(select); ResultSet resultSet =
-	 * prepareStatement.executeQuery(); while (resultSet.next()) { String
-	 * product_name = resultSet.getString(1); byte[] product_image =
-	 * resultSet.getBytes(2);
-	 * 
-	 * ProductPojo details = new ProductPojo();
-	 * details.setProductName(product_name);
-	 * details.setProduct_image(product_image);
-	 * 
-	 * list.add(details); } connection.close(); return list; }
-	 */
 	public List<CartPojo> retrieveCartDetails(int id) throws ClassNotFoundException, SQLException {
 		ArrayList<CartPojo> list = new ArrayList<CartPojo>();
 		Connection connection = Connect1.getConnection();
-		/*String select = "SELECT p.product_name, p.product_image, p.price, c.quantity, (p.price * c.quantity) AS total "
-				+ "FROM Products p " + "JOIN Cart c ON p.product_id = c.product_id";*/
 		String select = "SELECT p.product_name, p.product_image, p.price, c.cart_id, c.quantity, (p.price * c.quantity) AS total " +
                 "FROM Products p " +
                 "JOIN Cart c ON p.product_id = c.product_id " +
@@ -483,7 +424,7 @@ public class FarmerDao1 implements FarmerDao {
 
 	public List<CartPojo> DeleteCart(int cartId) throws ClassNotFoundException, SQLException {
 		ArrayList<CartPojo> list = new ArrayList<CartPojo>();
-	//public void DeleteCart(int cartId) throws ClassNotFoundException, SQLException {
+	
 		Connection connection = Connect1.getConnection();
 		String delete = "delete from Cart where cart_id=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(delete);
@@ -492,16 +433,28 @@ public class FarmerDao1 implements FarmerDao {
 		connection.close();
 		return list;
 	}
-	  public void insertOrder(Connection connection, CartPojo item) throws SQLException {
-	        String sql = "INSERT INTO Order_Table (customer_id, order_date, product_id, quantity, unit_price, total) VALUES (?, CURRENT_DATE, ?, ?, ?, ?)";
-	        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-	            statement.setInt(1, item.getCustomerId());
+	  public void insertOrder( CartPojo item) throws SQLException, ClassNotFoundException {
+		  Connection con = Connect1.getConnection();
+		   String sql = "INSERT INTO Order_Table (customer_id, order_date, product_id, quantity, unit_price, total) VALUES (?, CURRENT_DATE, ?, ?, ?, ?)";
+		     PreparedStatement statement = con.prepareStatement(sql);
+
+		     statement.setInt(1, item.getCustomerId());
 	            statement.setInt(2, item.getProductId());
 	            statement.setInt(3, item.getQuantity());
 	            statement.setFloat(4, item.getUnitPrice());
 	            statement.setFloat(5, item.getTotal());
 	            statement.executeUpdate();
-	        }
+		
+	  
 	    }
+	  public void updateStatus(CartPojo add1) throws ClassNotFoundException, SQLException {
+			Connection connection = Connect1.getConnection();
+			String update = "update Cart set status=? where customer_id=? ";
+			PreparedStatement pstmt = connection.prepareStatement(update);
+			pstmt.setString(1,"PAID");
+			pstmt.setInt(2, add1.getCustomerId());
+			pstmt.executeUpdate();
+			connection.close();
+		}
 	
 }

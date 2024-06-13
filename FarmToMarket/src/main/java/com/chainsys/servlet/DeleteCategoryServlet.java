@@ -52,7 +52,7 @@ public class DeleteCategoryServlet extends HttpServlet {
 			}
 			DisplayCategory obj=new DisplayCategory();
 			obj.doGet(request, response);
-}
+ }
 	
 	
 	

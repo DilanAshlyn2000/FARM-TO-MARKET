@@ -44,7 +44,7 @@ public class SearchUserServlet extends HttpServlet {
 		} 
 		catch (ClassNotFoundException | SQLException e)
 		{
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		 request.setAttribute("list", list);

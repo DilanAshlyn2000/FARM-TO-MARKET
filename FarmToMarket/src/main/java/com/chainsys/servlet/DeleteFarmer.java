@@ -37,7 +37,7 @@ public class DeleteFarmer extends HttpServlet {
 		String id= request.getParameter("id");
 		 int id1=Integer.parseInt(id); 
 		
-			try
+		try
 			{  
 				emp.DeleteUser(id1);
 				PrintWriter writer = response.getWriter();

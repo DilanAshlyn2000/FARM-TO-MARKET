@@ -35,10 +35,7 @@ public class DisplayProductAdminSide extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  FarmerDao1 form=new FarmerDao1();
 	      try {
-				/*
-				 * HttpSession session = request.getSession(false); 
-				 * int id = (int) session.getAttribute("id");
-				 */
+				
 	          List<ProductPojo> list = form.retriveProductDetails();
 	          request.setAttribute("list", list);
 	          request.getRequestDispatcher("ProductTable.jsp").forward(request, response);

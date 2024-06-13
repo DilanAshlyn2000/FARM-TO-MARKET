@@ -34,26 +34,7 @@ public class SearchCategoryLowToHigh extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 /* FarmerDao1 emp = new FarmerDao1();
-		    ProductPojo obj = new ProductPojo();
-		    List<ProductPojo> list = new ArrayList<>();
-		    int categoryId = Integer.parseInt(request.getParameter("Ctype"));
-		    System.out.println(categoryId);
-		    obj.setCategoryId(categoryId);
-		    Float price = Float.parseFloat(request.getParameter("price1"));
-		    obj.setPrice(price);
-		    System.out.println(price);
-		    try {
-		      
-		        list = emp.retrieveProductDetailsSorted(obj);
-		    } catch (ClassNotFoundException | SQLException e) {
-		        e.printStackTrace();
-		       
-		    }
-	   
-		    request.setAttribute("list", list); 	  
-		    request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
-		}*/
+	
 		 try {
 	          
 	            int categoryId = Integer.parseInt(request.getParameter("type"));

@@ -37,7 +37,7 @@ public class LogoutServlet extends HttpServlet {
 		 request.getSession(false).invalidate();
 		 response.sendRedirect("Home1.html");
 		 
- }
+  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

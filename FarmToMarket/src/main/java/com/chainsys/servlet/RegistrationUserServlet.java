@@ -59,30 +59,7 @@ public class RegistrationUserServlet extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*FarmerDao1 farmer=new FarmerDao1();
-		String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        HttpSession session=request.getSession();
-        try {
-        	 UserPojo user = farmer.loginUser1(email);
-        	    if (user.getPassword().equals(password)) {
-        	    	session.setAttribute("id", user.getId());
-        	        if (password.equals("Admin#01")) {
-        	            request.getRequestDispatcher("AdminHome.html").forward(request, response);
-        	        } else {
-        	            request.getRequestDispatcher("home.html").forward(request, response);
-        	        }
-        	    } else {
-        	        request.getRequestDispatcher("RegistrationUser.html").forward(request, response);
-        	    }
-        	 
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-      
-	
-	}*/
-		FarmerDao1 farmer=new FarmerDao1();
+				FarmerDao1 farmer=new FarmerDao1();
 		String email = request.getParameter("email");
         String password = request.getParameter("password");
         HttpSession session=request.getSession();

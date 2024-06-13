@@ -45,7 +45,7 @@ public class DisplayProductUserSide extends HttpServlet {
 	         
 	          e.printStackTrace();
 	      }
-	   
+	  // response.sendRedirect("DisplayProductUserSide");
 	}	
 	
 

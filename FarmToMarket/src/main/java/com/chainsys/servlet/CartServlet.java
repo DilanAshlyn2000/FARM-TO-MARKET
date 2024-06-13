@@ -64,19 +64,7 @@ public class CartServlet extends HttpServlet {
 			}
 			
 	}
-		/*
-		 * int customerId = Integer.parseInt(request.getParameter("customerId")); int
-		 * productId = Integer.parseInt(request.getParameter("productId")); int quantity
-		 * = Integer.parseInt(request.getParameter("quantity")); float unitPrice =
-		 * Integer.parseInt(request.getParameter("unitPrice")); float total =
-		 * Integer.parseInt(request.getParameter("total"));
-		 * 
-		 * CartPojo user = new CartPojo(); user.setCustomerId(customerId);
-		 * user.setProductId(productId); user.setQuantity(quantity);
-		 * user.setUnitPrice(unitPrice); user.setTotal(total);
-		 */
-        
-        
+		
 	
 
 	/**

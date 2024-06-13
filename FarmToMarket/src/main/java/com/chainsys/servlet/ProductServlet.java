@@ -92,7 +92,7 @@ public class ProductServlet extends HttpServlet {
 		    insert1.insertProduct(insert);
 		} catch (ClassNotFoundException | SQLException e) {
 		    e.printStackTrace();
-		}
+		 }
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

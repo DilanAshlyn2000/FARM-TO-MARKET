@@ -46,7 +46,7 @@ public class DisplayUserServlet extends HttpServlet {
 	          // TODO Auto-generated catch block
 	          e.printStackTrace();
 	      }
-		}	
+		 }	
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

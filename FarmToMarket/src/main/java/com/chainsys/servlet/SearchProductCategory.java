@@ -47,21 +47,10 @@ public class SearchProductCategory extends HttpServlet {
 		        e.printStackTrace();
 		       
 		    }
-	   
 		    request.setAttribute("productList", list); 	  
 		    request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
 		}
 
-		/*
-		 * FarmerDao1 emp=new FarmerDao1(); ProductPojo obj=new ProductPojo(); List
-		 * productList=null; int categoryId =
-		 * Integer.parseInt(request.getParameter("type"));
-		 * obj.setCategoryId(categoryId); try { productList=emp.searchDetails1(obj); }
-		 * catch (ClassNotFoundException | SQLException e) { // TODO Auto-generated
-		 * catch block e.printStackTrace(); } request.setAttribute("list", productList);
-		 * request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
-		 * }
-		 */
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
