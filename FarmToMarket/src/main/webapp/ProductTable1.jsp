@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.chainsys.model.ProductPojo"%>
 <%@ page import="java.util.*"%>
@@ -171,6 +172,40 @@ body {
     height: 58px;
     right: 35px;
     }
+    .text4 {
+	font-family: cursive;
+	text-align: left;
+	font-family: bold;
+	font-size: 30px;
+}
+select {
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 15%;
+    box-sizing: border-box;
+}
+
+.button2 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 19%;
+    box-sizing: border-box; /* Ensures padding does not add to width */
+}
+
+.button2:hover {
+    background-color: #45a049; /* Darker Green */
+}
+
 </style>
 </head>
 <body>
@@ -196,7 +231,11 @@ body {
     </nav>
   </header>
 	<div class="container">
-		<h1>PRODUCTS DETAILS</h1>
+		<div class="text4">
+		<h2>
+			<font color="#6f6e6c">PRODUCT</font> <font color="#74ab4f">DETAILS</font> 
+		</h2>
+	</div>
 		<form action="CartView" method="get">
         <input type="image" src="q7.jpg" alt="Submit">
     </form>
@@ -248,16 +287,7 @@ body {
  	<%
    }
 			%>
-<!--  <form action="SearchProductCategory" method="get">
-            <select id="type" name="type" required autofocus>
-                <option value="1">VEGETABLES</option>
-                <option value="5">FRUITS</option>
-                <option value="6">FLOWERS</option>
-                <option value="7">GRAINS & CEREALS</option>
-            </select>
-            <input type="submit" value="SEARCH" class="button2">
-        </form> -->
-        		
+     <div class="container1"> 		
      <form action="SearchCategoryLowToHigh" method="get">
     <% for (ProductPojo product : productList) { %>
         <input type="hidden" value="<%= product.getPrice() %>" name="price1">
@@ -283,8 +313,7 @@ body {
     </select>
     <input type="submit" value="SORT HIGH TO LOW" class="button2">
 </form>
- 
+ </div>
      
 </body>
 </html>
-

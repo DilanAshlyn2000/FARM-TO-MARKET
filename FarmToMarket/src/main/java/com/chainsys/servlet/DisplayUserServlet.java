@@ -38,14 +38,11 @@ public class DisplayUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		FarmerDao1 form = new FarmerDao1();
-
 		try {
 			List<UserPojo> list = form.retriveDetails();
-			System.out.println(list.get(0));
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("UserTable.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
-
 			e.printStackTrace();
 		}
 	}
@@ -70,7 +67,7 @@ public class DisplayUserServlet extends HttpServlet {
 
 			e.printStackTrace();
 		}
-	}
+   	}
 
 }
 

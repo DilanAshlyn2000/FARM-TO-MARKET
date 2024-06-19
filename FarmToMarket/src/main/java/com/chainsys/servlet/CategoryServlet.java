@@ -40,7 +40,6 @@ public class CategoryServlet extends HttpServlet {
 		add.setCategory(categoryId);
 		String category = request.getParameter("category");
 		add.setCategory(category);
-
 		FarmerDao1 emp = new FarmerDao1();
 		try {
 			emp.insertCategory(add);
@@ -61,5 +60,4 @@ public class CategoryServlet extends HttpServlet {
 
 		doGet(request, response);
 	}
-
 }

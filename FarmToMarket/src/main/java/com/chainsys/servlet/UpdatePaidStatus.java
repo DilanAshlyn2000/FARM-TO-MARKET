@@ -1,8 +1,6 @@
 package com.chainsys.servlet;
-
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.FarmerDao1;
 import com.chainsys.model.CartPojo;
-import com.chainsys.model.UserPojo;
+
 
 /**
  * Servlet implementation class UpdatePaidStatus
@@ -26,13 +24,14 @@ public class UpdatePaidStatus extends HttpServlet {
 	 */
 	public UpdatePaidStatus() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
@@ -46,15 +45,15 @@ public class UpdatePaidStatus extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("PaymentSuccess.html");
-	}
+	 }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

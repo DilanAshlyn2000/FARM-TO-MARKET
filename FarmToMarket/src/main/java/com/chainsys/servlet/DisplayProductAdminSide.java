@@ -38,14 +38,12 @@ public class DisplayProductAdminSide extends HttpServlet {
 		// DISPLAY PRODUCT TABLE WITHOUT SESSION
 		FarmerDao1 form = new FarmerDao1();
 		try {
-
 			List<ProductPojo> list = form.retriveProductDetails();
 			request.setAttribute("list", list);
-			request.getRequestDispatcher("ProductTable.jsp").forward(request, response);
+			request.getRequestDispatcher("ProductTableAdmin.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**

@@ -1,15 +1,12 @@
 package com.chainsys.servlet;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.chainsys.dao.FarmerDao1;
 import com.chainsys.model.ProductPojo;
 
@@ -50,7 +47,7 @@ public class DeleteProduct extends HttpServlet {
 		DisplayProduct obj = new DisplayProduct();
 		obj.doGet(request, response);
 	}
-
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

@@ -3,14 +3,11 @@ package com.chainsys.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.chainsys.dao.FarmerDao1;
 import com.chainsys.model.ProductPojo;
 
@@ -26,7 +23,7 @@ public class DisplayProductUserSide extends HttpServlet {
 	 */
 	public DisplayProductUserSide() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -42,10 +39,9 @@ public class DisplayProductUserSide extends HttpServlet {
 			request.setAttribute("productList", list);
 			request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
-
 			e.printStackTrace();
 		}
-	}
+	 }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -54,7 +50,7 @@ public class DisplayProductUserSide extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

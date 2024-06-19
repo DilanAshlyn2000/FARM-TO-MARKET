@@ -39,7 +39,6 @@ public class DeleteFarmer extends HttpServlet {
 		FarmerDao1 emp = new FarmerDao1();
 		String id = request.getParameter("id");
 		int id1 = Integer.parseInt(id);
-
 		try {
 			emp.DeleteUser(id1);
 			PrintWriter writer = response.getWriter();
@@ -61,5 +60,4 @@ public class DeleteFarmer extends HttpServlet {
 
 		doGet(request, response);
 	}
-
 }

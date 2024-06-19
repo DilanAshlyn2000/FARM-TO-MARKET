@@ -59,5 +59,4 @@ public class ConfirmOrder extends HttpServlet {
 
 		doGet(request, response);
 	}
-
 }

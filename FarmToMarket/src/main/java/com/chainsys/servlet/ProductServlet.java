@@ -14,7 +14,7 @@ import javax.servlet.http.Part;
 
 import com.chainsys.dao.FarmerDao1;
 import com.chainsys.model.ProductPojo;
-import com.chainsys.model.UserPojo;
+
 
 /**
  * Servlet implementation class ProductServlet
@@ -29,13 +29,14 @@ public class ProductServlet extends HttpServlet {
 	 */
 	public ProductServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -73,15 +74,17 @@ public class ProductServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("home.html");
-	}
+	 }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
+	
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

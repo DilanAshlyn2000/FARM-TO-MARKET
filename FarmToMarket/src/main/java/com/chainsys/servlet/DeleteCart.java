@@ -33,22 +33,20 @@ public class DeleteCart extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		FarmerDao1 form = new FarmerDao1();
-
 		String cartId = request.getParameter("cartId");
 		int cartId1 = Integer.parseInt(cartId);
-
 		try {
 			List<CartPojo> list = form.DeleteCart(cartId1);
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 		CartView obj = new CartView();
 		obj.doGet(request, response);
-	}
+	 }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

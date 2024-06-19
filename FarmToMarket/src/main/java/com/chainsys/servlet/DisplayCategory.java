@@ -25,7 +25,7 @@ public class DisplayCategory extends HttpServlet {
 	 */
 	public DisplayCategory() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -42,7 +42,6 @@ public class DisplayCategory extends HttpServlet {
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("CategoryTable.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
-
 			e.printStackTrace();
 		}
 	}
@@ -51,6 +50,7 @@ public class DisplayCategory extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

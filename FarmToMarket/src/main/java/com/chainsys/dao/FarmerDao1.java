@@ -110,7 +110,7 @@ public class FarmerDao1 implements FarmerDao {
 		String delete = "delete from Users where id=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(delete);
 		preparedStatement.setInt(1, id);
-		// int executeUpdate = preparedStatement.executeUpdate();
+		int executeUpdate = preparedStatement.executeUpdate();
 	}
 
 	public void insertCategory(UserPojo add1) throws SQLException, ClassNotFoundException {
@@ -146,7 +146,7 @@ public class FarmerDao1 implements FarmerDao {
 		String delete = "delete from Categories where category_Id=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(delete);
 		preparedStatement.setInt(1, categoryId);
-		// int executeUpdate = preparedStatement.executeUpdate();
+		 int executeUpdate = preparedStatement.executeUpdate();
 	}
 
 	public void insertProduct(ProductPojo add2) throws SQLException, ClassNotFoundException {
@@ -214,7 +214,6 @@ public class FarmerDao1 implements FarmerDao {
 			float price = resultSet.getFloat(6);
 			int stock_quantity = resultSet.getInt(7);
 			int category_id = resultSet.getInt(8);
-			// System.out.println(category_id);
 			ProductPojo details = new ProductPojo();
 			details.setProductId(product_id);
 			details.setProductName(product_name);
@@ -230,6 +229,7 @@ public class FarmerDao1 implements FarmerDao {
 		return list;
 	}
 
+	
 	public void DeleteProduct(int ProductId) throws ClassNotFoundException, SQLException {
 		Connection connection = Connect1.getConnection();
 		String delete = "delete from Products where Product_Id=?";
@@ -240,6 +240,17 @@ public class FarmerDao1 implements FarmerDao {
 		connection.close();
 
 	}
+	/*public void DeleteProduct(String ProductName,int FarmerId) throws ClassNotFoundException, SQLException {
+		Connection connection = Connect1.getConnection();
+		String delete = "delete from Products where Product_name=? AND farmer_id" ;
+		PreparedStatement preparedStatement = connection.prepareStatement(delete);
+		preparedStatement.setString(1, ProductName);
+		preparedStatement.setInt(2, FarmerId);
+		int executeUpdate = preparedStatement.executeUpdate();
+		preparedStatement.close();
+		connection.close();
+
+	}*/
 
 	public List<UserPojo> searchDetails(UserPojo obj) throws ClassNotFoundException, SQLException {
 		ArrayList<UserPojo> list = new ArrayList<>();

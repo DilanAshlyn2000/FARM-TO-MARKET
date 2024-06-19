@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import com.chainsys.dao.FarmerDao1;
 import com.chainsys.model.UserPojo;
@@ -26,13 +26,13 @@ public class UpdateUser extends HttpServlet {
 	 */
 	public UpdateUser() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List list = null;
@@ -41,7 +41,6 @@ public class UpdateUser extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String id = request.getParameter("updateId");
-		System.out.println(id);
 		int id1 = Integer.parseInt(id);
 		UserPojo user = new UserPojo();
 		user.setName(name);
@@ -70,6 +69,7 @@ public class UpdateUser extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List list = null;
@@ -78,7 +78,6 @@ public class UpdateUser extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String id = request.getParameter("updateId");
-		System.out.println(id);
 		int id1 = Integer.parseInt(id);
 		UserPojo user = new UserPojo();
 		user.setName(name);
@@ -87,17 +86,12 @@ public class UpdateUser extends HttpServlet {
 		user.setAddress(address);
 		user.setId(id1);
 		FarmerDao1 register = new FarmerDao1();
-
 		try {
-
 			register.updateUser(user);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-
 		try {
-//    		 HttpSession session = request.getSession(false);
-//    		 int id1=  (int) session.getAttribute("id");
 			list = register.retriveDetails1(id1);
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -106,4 +100,4 @@ public class UpdateUser extends HttpServlet {
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
 	}
-}
+ }

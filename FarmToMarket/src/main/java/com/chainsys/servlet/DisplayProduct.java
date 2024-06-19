@@ -40,15 +40,14 @@ public class DisplayProduct extends HttpServlet {
 		int id = (int) session.getAttribute("id");
 		FarmerDao1 form = new FarmerDao1();
 		try {
-
 			List<ProductPojo> list = form.retriveProductDetails(id);
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("ProductTable.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
+	 }
+ 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

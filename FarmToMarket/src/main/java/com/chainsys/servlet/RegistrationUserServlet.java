@@ -36,7 +36,6 @@ public class RegistrationUserServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String password = request.getParameter("password");
-
 		UserPojo user = new UserPojo();
 		user.setName(name);
 		user.setType(type);
@@ -52,7 +51,7 @@ public class RegistrationUserServlet extends HttpServlet {
 		}
 
 		response.sendRedirect("LoginUser.html");
-	}
+	 }
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

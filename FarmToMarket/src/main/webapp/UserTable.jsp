@@ -3,7 +3,7 @@
 <%@ page import="com.chainsys.model.UserPojo"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Thank You Page</title>
@@ -12,14 +12,13 @@ body {
 	margin: 0;
 	font-family: Arial, sans-serif;
 	/* font-family: Apple Chancery, cursive; */
-	overflow: hidden;
 }
 
 table {
 	border-collapse: collapse;
 	width: 73%;
 	background-color: white;
-	margin-top: 108px;
+	margin-top: 38px;
 	margin-left: 179px;
 }
 
@@ -150,15 +149,17 @@ nav {
 .nav-links li a:hover {
 	color: olive;
 }
+.text4{
+    font-family:  cursive;
+    text-align: center;
+    font-family: bold;
+    font-size:30px;
+    }
 </style>
 <body>
-
 	<header>
 		<nav>
-
 			<div class="login-signup">
-
-
 				<button class="signup">LOGOUT</button>
 			</div>
 		</nav>
@@ -173,24 +174,23 @@ nav {
 				<li><a href="Category.html">Add Category</a></li>
 				<li><a href="DisplayCategory">View Category</a></li>
 				<li><a href="DisplayProductAdminSide">View Products</a></li>
-
-				</div>
-				</li>
 			</ul>
 		</nav>
 	</header>
-	<h1>USER DETAILS</h1>
+	<div class="text4">
+		<h2>
+			<font color="#6f6e6c">USER</font> <font color="#74ab4f">DETAILS</font></h2>
+	</div>
+	
 	<table border="1">
-		<tr
-			style="text-align: center; background-color: #4CAF50; color: white;">
+		<tr style="text-align: center; background-color: #4CAF50; color: white;">
 			<td>ID</td>
 			<td>NAME</td>
 			<td>TYPE</td>
 			<td>PHONE NUMBER</td>
 			<td>EMAIL</td>
 			<td>ADDRESS</td>
-			<td>DELETE</td>
-			<!--  <td colspan="2">EDIT</td> -->
+			<td>DELETE</td>	
 		</tr>
 		<% 
         List<UserPojo> form = (List<UserPojo>) request.getAttribute("list");
@@ -209,15 +209,6 @@ nav {
 					<input type="hidden" class="button1" value=<%=obj.getId()%>
 						name="id"> <input type="submit" value="DELETE DETAILS"
 						class="button1" name="action">
-
-				</form>
-
-				<form action="UpdateUser" method="get">
-
-					<input type="hidden" name="name" value="<%=obj.getId() %>">
-					<%--  <a href="UpdateUserTable.jsp?updateId=<%=obj.getId() %>"><button>Update</button></a> --%>
-					<a href="UpdateUserTable.jsp?updateId=<%=obj.getId() %>">Update</a>
-
 				</form>
 		</tr>
 		<%
@@ -232,7 +223,5 @@ nav {
 				<option value="farmers">FARMER</option>
 				<option value="others">ADMIN</option>
 			</select> <input type="submit" value="SEARCH" class="button2">
-			<!-- <label for="name">Type:</label><br>
-			 <input type="text" id="name" name="type" placeholder="Enter type" required autofocus>
-				<input type="submit" value="SEARCH" class="button2"> -->
+		</form>
 	</div>

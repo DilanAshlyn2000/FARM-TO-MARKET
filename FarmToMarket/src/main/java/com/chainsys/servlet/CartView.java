@@ -3,7 +3,6 @@ package com.chainsys.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +37,6 @@ public class CartView extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		int id = (int) session.getAttribute("id");
-
 		FarmerDao1 form = new FarmerDao1();
 		try {
 			List<CartPojo> list = form.retrieveCartDetails(id);
