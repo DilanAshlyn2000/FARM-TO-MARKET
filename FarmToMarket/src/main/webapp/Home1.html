@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" 
-          href=
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 </head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +11,10 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      /* font-family: Apple Chancery, cursive; */
-
-      
       overflow: hidden;
-      
     }
 html {
-    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-y: auto;
 }
     header {
       background-color: #333;
@@ -145,17 +139,16 @@ html {
  .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: white; /* Blue color */
-            color:45a049; /* White text color */
-            text-decoration: none; /* Remove default underline */
-            border: none; /* Remove default button border */
-            border-radius: 5px; /* Add some border radius for rounded corners */
-            cursor: pointer; /* Add pointer cursor on hover */
-            transition: background-color 0.3s; /* Smooth transition for background color change */
+            background-color: white; 
+            color:45a049; 
+            text-decoration: none; 
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
         }
         fieldset{
         font-family: Arial, sans-serif;
-          /* font-family:  Apple Chancery, cursive; */
             top: 132px;
     position: absolute;
     height: 630px;
@@ -163,9 +156,7 @@ html {
     text-align: center;
     color: white;
     background:rgba(62, 188, 3, 0.5);
- /*    rgba(230, 238, 9, 0.5); */
-  /*   rgba(226, 252, 133, 0.2); */
-    /*  rgb(132 210 110 / 50%);   */
+ 
     right: 71px;
 }
     .h2{
@@ -186,8 +177,6 @@ html {
     left: 51px;
     top: 93px
     }
-
-   
 
      .circle {
       width: 105px;
@@ -266,13 +255,11 @@ html {
     flex: 0 0 200px;
     margin: 0px;
     padding: 20px;
-    top: 35px;
+    top: -112px;
     left:100px;
     border: 1px black;
     box-shadow: -44px 26px 55px 0px rgba(0,0,0,0.22),0px 5px 14px 0px rgba(0,0,0,0.18);
-    /* box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3); */
     background:white;
-   /*   rgba(80, 200, 120, 0.2); */
     } 
   .card img {
     max-width: 100%;
@@ -282,7 +269,42 @@ html {
     color:light-grey;
     
   }
- 
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    min-height: calc(100vh - 50px); 
+}
+
+footer {
+  background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  /*   position: absolute;
+    bottom: -1862px; */
+    width: 100%;
+/*     left: 0;
+ */}
+
+.container3 {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 0;
+}
+ h1 {
+    position: absolute;
+    top: 140px;
+    color: white;
+    left: 20px;
+    font-size: 4pc;
+}
   </style>
 </head>
 <body>
@@ -291,7 +313,7 @@ html {
     <nav>
      
       <div class="login-signup">
-        <a href="LoginUser.html" class="login">Login</a>
+        <a href="LoginUser.html" class="login">Sign In</a>
         <a href="RegistrationUser.html">
         <button class="signup">Sign Up</button>
      
@@ -303,33 +325,30 @@ html {
     <nav>
       <a href="#" class="logo">  <img src="Screenshot (188).png" alt="Logo" class="logo"></a>
       <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
+        <li><a href="Home1.html">Home</a></li>
       <!--   <li><a href="DisplayProductUserSide">Market</a></li> -->
         <li><a href="MarketCategory.html">Market</a></li>
         <li class="dropdown">
           <a href="#">About Us</a>
           <div class="dropdown-content">
-            <a href="#">Our Team</a>
+            <a href="OurPeople.html">Our Team</a>
             <a href="OurCompany.html">Our Company</a>    
           </div>
         </li>
-            <li> <div class="dropdown1">
-  <a href="DisplayUserServlet" class="logo1">  <i class="fa fa-bars" style="font-size:32px;">
+        <form action="DisplayUserServlet" method="post">
+    <button type="submit">
+        <i class="fa fa-bars" style="font-size:32px;"></i>
+    </button>
+</form>
+        
+  <!-- <a href="DisplayUserServlet" class="logo1">  <i class="fa fa-bars" style="font-size:32px;"> -->
     </i></a>
- <!--  <div class="dropdown-content">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  </div></li> -->
+
       </ul>
     </nav>
   </header>
   <img src="w1.jpeg" alt="image" width="100%" height="650" class="img2" > 
-<!--   <div class="content1">
-    
-    <h2> OUR JOURNEY SPANS FROM THE LUSH GREEN FIELDS, TO THE VIBRANT ENERGY OF BUSTLING MARKETS.</h2>
-   
-  </div> -->
+  <h1>AGRIMARKETPLACE</h1>
 <fieldset>
 <h3>CATEGORIES</h3>
  <div class="circle-container">
@@ -367,7 +386,7 @@ We are committed to promoting sustainable farming practices and empowering farme
 
 Join us in supporting a vibrant agricultural ecosystem. Together, we can build a future where everyone has access to nutritious, locally grown food, and where farmers are celebrated as the stewards of our land and heritage. Thank you for choosing Agri Marketplace as your trusted partner in agriculture.
  <div class="button-container" >
-            <a href="marketplace.html" class="button3">Explore the Marketplace</a>
+            <a href="MarketCategory.html" class="button3">Explore the Marketplace</a>
             <a href="OurCompany.html" class="button3">Learn more about us</a>
         </div>
 </div>
@@ -386,6 +405,11 @@ Join us in supporting a vibrant agricultural ecosystem. Together, we can build a
 <video autoplay muted loop id="myVideo" class="video"> 
     <source src="Recording 2024-06-03 231923.mp4" type="video/mp4">
    </video>
+   <div class="text4">
+<h2><font color="#6f6e6c">WHY</font>
+            <font color="#74ab4f">AGRIMARKETPLACE</font>
+            <font color="#6f6e6c">?</font></h2>
+            </div>
    <main class="cards">
        
         </article>
@@ -428,6 +452,12 @@ Join us in supporting a vibrant agricultural ecosystem. Together, we can build a
      
       <p>Crop reliability through supply chain traceability (coming soon)</p>
           </div>
-
+          </article>
+          </main>
+<footer>
+        <div class="container2">
+            <p>&copy; 2024 AGRIMARKETPLACE. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

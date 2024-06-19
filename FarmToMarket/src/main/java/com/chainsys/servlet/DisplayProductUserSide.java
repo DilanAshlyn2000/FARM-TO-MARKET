@@ -20,39 +20,40 @@ import com.chainsys.model.ProductPojo;
 @WebServlet("/DisplayProductUserSide")
 public class DisplayProductUserSide extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DisplayProductUserSide() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  FarmerDao1 form=new FarmerDao1();
-	      try {
-	    	  HttpSession session = request.getSession(false);
-	 		 
-	 		 int id = (int) session.getAttribute("id");
-	          List<ProductPojo> list = form.retriveProductDetails();
-	          request.setAttribute("productList", list);
-	          request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
-	      } catch (ClassNotFoundException | SQLException e) {
-	         
-	          e.printStackTrace();
-	      }
-	  // response.sendRedirect("DisplayProductUserSide");
-	}	
-	
+	public DisplayProductUserSide() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		FarmerDao1 form = new FarmerDao1();
+		try {
+			List<ProductPojo> list = form.retriveProductDetails();
+			request.setAttribute("productList", list);
+			request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.FarmerDao1;
 import com.chainsys.model.CartPojo;
-import com.chainsys.model.ProductPojo;
 
 /**
  * Servlet implementation class CartView
@@ -27,27 +26,30 @@ public class CartView extends HttpServlet {
 	 */
 	public CartView() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         HttpSession session = request.getSession(false);	 
-		 int id =  (int) session.getAttribute("id");
-		 System.out.println(id);
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		int id = (int) session.getAttribute("id");
+
 		FarmerDao1 form = new FarmerDao1();
 		try {
-			
 			List<CartPojo> list = form.retrieveCartDetails(id);
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("CartView1.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-			
 	}
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

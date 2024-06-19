@@ -2,8 +2,6 @@ package com.chainsys.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.dao.FarmerDao1;
-import com.chainsys.model.FarmerPojo;
+
 import com.chainsys.model.UserPojo;
 
 /**
@@ -21,45 +19,46 @@ import com.chainsys.model.UserPojo;
 @WebServlet("/CategoryServlet")
 public class CategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CategoryServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CategoryServlet() {
+		super();
+
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String categoryId = request.getParameter("categoryId");
-        // Create FarmerPojo object with the provided data
-        UserPojo add = new UserPojo();
-        add.setCategory(categoryId);
+		UserPojo add = new UserPojo();
+		add.setCategory(categoryId);
 		String category = request.getParameter("category");
 		add.setCategory(category);
-        
-        FarmerDao1 emp=new FarmerDao1();
-		try 
-		{
+
+		FarmerDao1 emp = new FarmerDao1();
+		try {
 			emp.insertCategory(add);
-		} 
-		catch (ClassNotFoundException | SQLException e) 
-		{
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		DisplayCategory obj=new DisplayCategory();
+		DisplayCategory obj = new DisplayCategory();
 		obj.doGet(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// TODO Auto-generated method stub
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

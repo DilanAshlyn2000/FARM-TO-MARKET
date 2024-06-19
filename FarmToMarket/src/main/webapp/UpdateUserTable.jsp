@@ -16,7 +16,7 @@ max-width: 330px;
     position: absolute;
    color:black;
         left: 27%;
-    top: 93px;
+    top: 172px;
     line-height: 0.5;
     background-image: url('b1.webp'); 
   background-size: cover; 
@@ -73,18 +73,18 @@ max-width: 330px;
 }
   
     img.img2{
-    height: 582px;
-    top: 93px;
+ height: 432px;
+    top: 172px;
     position: absolute;
     left: 682px;
-    width:400px;
-    opacity: 0.5; 
+    width: 376px;
+    opacity: 0.5;
     }
  .pic1{
  position: relative;
     color: white;
     top: 21pc;
-    left: 49pc;
+    left: 48pc;
     width: 250px;
     font-size: large;
     text-align: center;
@@ -115,16 +115,13 @@ max-width: 330px;
     <label for="address">Address:</label>
     <textarea id="address" name="address" rows="2" placeholder="Enter Address" ></textarea>
 
-    <!-- Embedding Java code for the hidden input -->
     <%
       // Retrieving the 'updateId' parameter from the request
       String updateId = request.getParameter("updateId");
     %>
     <input type="hidden" name="updateId" value="<%= request.getParameter("updateId") %>">
-
     <input type="submit" value="UPDATE">
   </form>
 </div>
-
 </body>
 </html>

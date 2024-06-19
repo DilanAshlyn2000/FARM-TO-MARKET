@@ -261,7 +261,7 @@ position: absolute;
      
       <div class="login-signup">
        
-       <!--  <a href="LogoutServlet" method="get"></a> -->
+ <!--<a href="LogoutServlet" method="get"></a>-->
         <button class="signup">LOGOUT</button>
       </div>
     </nav>
@@ -275,7 +275,6 @@ position: absolute;
             <li><a href="Category.html">Add Category</a></li>
            <li> <a href="DisplayCategory">View Category</a></li>
            <li> <a href="DisplayProduct">View Products</a></li>
-       
           </div>
         </li>
       </ul>
@@ -285,7 +284,7 @@ position: absolute;
         <h1>PRODUCTS DETAILS</h1>
         <table>
             <tr>
-                <th>PRODUCT ID</th>
+                <!-- <th>PRODUCT ID</th> -->
                 <th>PRODUCT NAME</th>
                 <th>PRODUCT IMAGE</th>
                 <th>FARMER ID</th>
@@ -293,14 +292,15 @@ position: absolute;
                 <th>PRICE</th>
                 <th>STOCK QUANTITY</th>
                 <th>CATEGORY ID</th>
-                <th colspan="2">EDIT</th>
+                <th colspan="2">DELETE</th>
             </tr>
             <% 
             List<ProductPojo> productList = (List<ProductPojo>) request.getAttribute("list");
             for (ProductPojo product : productList) {
+            	System.out.println("ID __" + product.getProductId());
             %>
             <tr>
-                <td><%= product.getProductId() %></td>
+               <%--  <td><%= product.getProductId() %></td> --%>
                 <td><%= product.getProductName() %></td>
                 <td><img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(product.getProduct_image()) %>" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
                 <td><%= product.getFarmerId() %></td>
@@ -312,24 +312,29 @@ position: absolute;
                 <input type="hidden" value="<%=product.getProductName()%>" name="productName">
                 	<input type="hidden" value="<%=product.getPrice()%>" name="price">
                 	<input type="hidden" value="<%=product.getCategoryId()%>" name="CategoryId">
-                <%--   <td><form action="DeleteProduct" method="get">
-		<!-- Your input fields here -->
-		<input type="hidden" class="button1" value=<%=product.getProductId()%> name="id">
-		<input type="submit" value="DELETE DETAILS" class="button1" name="action"> --%>
+                	<input type="hidden" value="<%=product.getStockQuantity()%>" name="stockQuantity">
 		   <td><form action="DeleteProduct" method="get">
                  <button class="delete-btn" value=<%= product.getProductId() %> name="id")>Delete</button>
+                 </form>
                 </td>
             </tr>
+          <td> 
+            <%--  <button class="delete-btn"onclick="updateProduct(<%= product.getProductId() %>)">UPDATE</button> --%>
+            <form action="UpdateFarmerProduct.jsp" >
+            	<input type="hidden" name="id" value="<%=product.getProductId()%>">
+               <!--  <input type="submit" name="update" value="Update"> -->
+               <button>Update</button>
+            </form>
+            </td>
+            </tr> 
             <% } %>
         </table>
     </div>
-
-  <!--   <script>
-        function deleteProduct(productId) {
-            // Implement delete product functionality
-            alert("Product with ID " + productId + " will be deleted.");
-        }
-    </script>  -->
+    <script>
+function updateProduct(productId) {
+    window.location.href = "UpdateFarmerProduct.jsp?productId=" + productId;
+}
+</script>   
 </body>
 </html> 
    

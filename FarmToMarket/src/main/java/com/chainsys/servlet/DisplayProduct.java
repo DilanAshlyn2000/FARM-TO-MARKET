@@ -21,46 +21,42 @@ import com.chainsys.model.ProductPojo;
 public class DisplayProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	// static String email;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public DisplayProduct() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		
-		 HttpSession session = request.getSession(false);
-		 int id =  (int) session.getAttribute("id");
-		 System.out.println(id);
+		HttpSession session = request.getSession(false);
+		int id = (int) session.getAttribute("id");
 		FarmerDao1 form = new FarmerDao1();
 		try {
-			
+
 			List<ProductPojo> list = form.retriveProductDetails(id);
-			System.out.println(list.get(0));
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("ProductTable.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

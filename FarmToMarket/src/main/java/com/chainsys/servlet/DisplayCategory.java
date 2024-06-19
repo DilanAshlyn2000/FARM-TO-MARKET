@@ -19,38 +19,40 @@ import com.chainsys.model.UserPojo;
 @WebServlet("/DisplayCategory")
 public class DisplayCategory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DisplayCategory() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  FarmerDao1 form=new FarmerDao1();
-	      try {
-	          List<UserPojo> list = form.retriveCategoryDetails();
-	          System.out.println(list.get(0));
-	          request.setAttribute("list", list);
-	          request.getRequestDispatcher("CategoryTable.jsp").forward(request, response);
-	      } catch (ClassNotFoundException | SQLException e) {
-	          // TODO Auto-generated catch block
-	          e.printStackTrace();
-	      }
-		}	
-	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		}	
+	public DisplayCategory() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		FarmerDao1 form = new FarmerDao1();
+		try {
+			List<UserPojo> list = form.retriveCategoryDetails();
+			// Set the list of category details as an attribute in the request object
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("CategoryTable.jsp").forward(request, response);
+		} catch (ClassNotFoundException | SQLException e) {
 
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+}

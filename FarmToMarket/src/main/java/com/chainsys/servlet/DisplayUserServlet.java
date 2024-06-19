@@ -12,9 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.FarmerDao1;
-import com.chainsys.model.FarmerPojo;
-import com.chainsys.model.UserPojo;
 
+import com.chainsys.model.UserPojo;
 
 /**
  * Servlet implementation class DisplayFarmersServlet
@@ -22,38 +21,57 @@ import com.chainsys.model.UserPojo;
 @WebServlet("/DisplayUserServlet")
 public class DisplayUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DisplayUserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  FarmerDao1 form=new FarmerDao1();
-		 
-	      try {
-	          List<UserPojo> list = form.retriveDetails();
-	          System.out.println(list.get(0));
-	          request.setAttribute("list", list);
-	          request.getRequestDispatcher("UserTable.jsp").forward(request, response);
-	      } catch (ClassNotFoundException | SQLException e) {
-	          // TODO Auto-generated catch block
-	          e.printStackTrace();
-	      }
-		 }	
-	
+	public DisplayUserServlet() {
+		super();
+
+	}
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		FarmerDao1 form = new FarmerDao1();
+
+		try {
+			List<UserPojo> list = form.retriveDetails();
+			System.out.println(list.get(0));
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("UserTable.jsp").forward(request, response);
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		FarmerDao1 form = new FarmerDao1();
+		HttpSession session = request.getSession();
+
+		int id = (int) session.getAttribute("id");
+		try {
+			List<UserPojo> list = form.retriveDetails1(id);
+
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 }
+
+

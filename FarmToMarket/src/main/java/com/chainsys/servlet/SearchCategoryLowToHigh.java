@@ -31,32 +31,31 @@ public class SearchCategoryLowToHigh extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		 try {
-	          
-	            int categoryId = Integer.parseInt(request.getParameter("type"));
-	    float price = Float.parseFloat(request.getParameter("price1"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	            ProductPojo obj = new ProductPojo();
-	            obj.setCategoryId(categoryId);
-	       obj.setPrice(price);
+		try {
 
-	            FarmerDao1 productRetriever = new FarmerDao1();
-	            List<ProductPojo> productList = productRetriever.retrieveProductDetailsSorted(obj);
+			int categoryId = Integer.parseInt(request.getParameter("type"));
+			float price = Float.parseFloat(request.getParameter("price1"));
 
-	            
-	            request.setAttribute("productList", productList);
-	            request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
-		 } catch (ClassNotFoundException | SQLException | NumberFormatException e) {
-		     // Handle exceptions
-		     e.printStackTrace();
-		 }
-	    }
-	
+			ProductPojo obj = new ProductPojo();
+			obj.setCategoryId(categoryId);
+			obj.setPrice(price);
 
+			FarmerDao1 productRetriever = new FarmerDao1();
+			List<ProductPojo> productList = productRetriever.retrieveProductDetailsSorted(obj);
+
+			request.setAttribute("productList", productList);
+			request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
+		} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
+			// Handle exceptions
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

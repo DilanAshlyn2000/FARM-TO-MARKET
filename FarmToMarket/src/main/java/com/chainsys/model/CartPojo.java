@@ -1,11 +1,10 @@
 package com.chainsys.model;
 
-import java.util.Date;
 
 public class CartPojo {
 	int cartId;
 	  int  customerId;
-		/* String orderDate; */
+		
 	    int productId;
 	    int quantity;
 	    float unitPrice;

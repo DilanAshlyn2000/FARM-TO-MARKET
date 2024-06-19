@@ -19,47 +19,47 @@ import com.chainsys.model.ProductPojo;
 @WebServlet("/SearchCategoryHighToLow")
 public class SearchCategoryHighToLow extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchCategoryHighToLow() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 try {
-	          
-	            int categoryId = Integer.parseInt(request.getParameter("type"));
-	    float price = Float.parseFloat(request.getParameter("price1"));
-
-	            ProductPojo obj = new ProductPojo();
-	            obj.setCategoryId(categoryId);
-	       obj.setPrice(price);
-
-	            FarmerDao1 productRetriever = new FarmerDao1();
-	            List<ProductPojo> productList = productRetriever.retrieveProductDetailsSorted1(obj);
-
-	            
-	            request.setAttribute("productList", productList);
-	            request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
-		 } catch (ClassNotFoundException | SQLException | NumberFormatException e) {
-		     // Handle exceptions
-		     e.printStackTrace();
-		 }
-	    }
-	
-	
-	
+	public SearchCategoryHighToLow() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+
+			int categoryId = Integer.parseInt(request.getParameter("type"));
+			float price = Float.parseFloat(request.getParameter("price1"));
+
+			ProductPojo obj = new ProductPojo();
+			obj.setCategoryId(categoryId);
+			obj.setPrice(price);
+
+			FarmerDao1 productRetriever = new FarmerDao1();
+			List<ProductPojo> productList = productRetriever.retrieveProductDetailsSorted1(obj);
+
+			request.setAttribute("productList", productList);
+			request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
+		} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
+			// Handle exceptions
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

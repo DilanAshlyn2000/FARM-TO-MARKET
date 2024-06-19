@@ -21,42 +21,30 @@ import com.chainsys.model.UserPojo;
 @WebServlet("/SearchProductCategory")
 public class SearchProductCategory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchProductCategory() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    FarmerDao1 emp = new FarmerDao1();
-		    ProductPojo obj = new ProductPojo();
-		    List<ProductPojo> list = new ArrayList<>(); 
-		    int categoryId = Integer.parseInt(request.getParameter("type"));
-		    obj.setCategoryId(categoryId);
+	public SearchProductCategory() {
+		super();
+	}
 
-		    try {
-		      
-		        list = emp.searchDetails1(obj);
-		    } catch (ClassNotFoundException | SQLException e) {
-		        e.printStackTrace();
-		       
-		    }
-		    request.setAttribute("productList", list); 	  
-		    request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		FarmerDao1 emp = new FarmerDao1();
+		ProductPojo obj = new ProductPojo();
+		List<ProductPojo> list = new ArrayList<>();
+		int categoryId = Integer.parseInt(request.getParameter("type"));
+		obj.setCategoryId(categoryId);
+		try {
+			list = emp.searchDetails1(obj);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+
 		}
+		request.setAttribute("productList", list);
+		request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
+	}
 
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

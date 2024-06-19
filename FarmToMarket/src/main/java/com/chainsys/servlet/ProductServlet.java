@@ -23,63 +23,42 @@ import com.chainsys.model.UserPojo;
 @MultipartConfig
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProductServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*
-	 * ProductPojo insert=new ProductPojo();
-	 * 
-	 * String productName = request.getParameter("productName"); int farmerId =
-	 * Integer.parseInt(request.getParameter("farmerId")); String description =
-	 * request.getParameter("description"); float price =
-	 * Float.parseFloat(request.getParameter("price")); int stockQuantity =
-	 * Integer.parseInt(request.getParameter("stockQuantity")); int categoryId =
-	 * Integer.parseInt(request.getParameter("categoryId"));
-	 * 
-	 * 
-	 * ProductPojo add = new ProductPojo();
-	 * 
-	 * add.setProductName(productName); add.setFarmerId(farmerId);
-	 * add.setDescription(description); add.setPrice(price);
-	 * add.setStockQuantity(stockQuantity); add.setCategoryId(categoryId);
-	 * 
-	 * FarmerDao1 insert1=new FarmerDao1(); try { insert1.insertProduct(insert); }
-	 * catch (ClassNotFoundException | SQLException e) { e.printStackTrace(); } }
-	 * 
-	 * 
-	 * 
+	public ProductServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-		ProductPojo insert = new ProductPojo();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String productName = request.getParameter("productName");
 		Part filePart = request.getPart("fileToUpload");
-        byte[] imageBytes = null;
+		byte[] imageBytes = null;
 
-        if (filePart != null) {
-            try (InputStream inputStream = filePart.getInputStream()) {
-                imageBytes = inputStream.readAllBytes();
-            } catch (IOException e) {
-                e.printStackTrace();
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error reading uploaded file");
-                return;
-            }
-        }
+		if (filePart != null) {
+			try (InputStream inputStream = filePart.getInputStream()) {
+				// store them in the byte array
+				imageBytes = inputStream.readAllBytes();
+			} catch (IOException e) {
+				e.printStackTrace();
+				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error reading uploaded file");
+				return;
+			}
+		}
 		int farmerId = Integer.parseInt(request.getParameter("farmerId"));
 		String description = request.getParameter("description");
 		float price = Float.parseFloat(request.getParameter("price"));
 		int stockQuantity = Integer.parseInt(request.getParameter("stockQuantity"));
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-
+		ProductPojo insert = new ProductPojo();
 		insert.setProductName(productName);
 		insert.setFarmerId(farmerId);
 		insert.setDescription(description);
@@ -89,15 +68,19 @@ public class ProductServlet extends HttpServlet {
 		insert.setProduct_image(imageBytes);
 		FarmerDao1 insert1 = new FarmerDao1();
 		try {
-		    insert1.insertProduct(insert);
+			insert1.insertProduct(insert);
 		} catch (ClassNotFoundException | SQLException e) {
-		    e.printStackTrace();
-		 }
+			e.printStackTrace();
+		}
+		response.sendRedirect("home.html");
 	}
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

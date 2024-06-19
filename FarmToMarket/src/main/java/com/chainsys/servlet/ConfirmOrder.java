@@ -1,29 +1,30 @@
 package com.chainsys.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.FarmerDao1;
-import com.chainsys.model.UserPojo;
+import com.chainsys.model.CartPojo;
 
 /**
- * Servlet implementation class DeleteCategoryServlet
+ * Servlet implementation class ConfirmOrder
  */
-@WebServlet("/DeleteCategoryServlet")
-public class DeleteCategoryServlet extends HttpServlet {
+@WebServlet("/ConfirmOrder")
+public class ConfirmOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DeleteCategoryServlet() {
+	public ConfirmOrder() {
 		super();
 
 	}
@@ -35,20 +36,17 @@ public class DeleteCategoryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UserPojo delete = new UserPojo();
-		FarmerDao1 emp = new FarmerDao1();
-		String categoryId = request.getParameter("categoryId");
-		int categoryId1 = Integer.parseInt(categoryId);
-
+		// RETRIEVING CART DETAILS AND DISPLAY IN CARD FORMAT FOR CONFIRM PAGE
+		HttpSession session = request.getSession(false);
+		int id = (int) session.getAttribute("id");
+		FarmerDao1 form = new FarmerDao1();
 		try {
-			emp.DeleteCategory(categoryId1);
-			PrintWriter writer = response.getWriter();
-			writer.println(delete.getId() + "deleted");
+			List<CartPojo> list = form.retrieveCartDetails(id);
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("BuyPage.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		DisplayCategory obj = new DisplayCategory();
-		obj.doGet(request, response);
 	}
 
 	/**
@@ -58,6 +56,7 @@ public class DeleteCategoryServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

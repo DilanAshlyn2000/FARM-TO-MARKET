@@ -91,11 +91,115 @@ body {
 	padding: 5px;
 	text-align: center;
 }
+      header {
+      background-color: #333;
+      color: #fff;
+    }
+
+    nav {
+      padding: 0px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      width: 251px;
+    
+    }
+    
+    .content {
+      padding: 20px;
+    }
+
+    .header1{
+      background-color: white;
+      color: black;
+    }
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-right: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: olive;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #000;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+       input[type="image"] {
+    position: absolute;
+    top: 78px;
+    height: 58px;
+    right: 35px;
+    }
 </style>
 </head>
 <body>
+  <header class="header1">
+    <nav>
+      <a href="#" class="logo">  <img src="Screenshot (188).png" alt="Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="Home1.html">Home</a></li>
+      <!--   <li><a href="DisplayProductUserSide">Market</a></li> -->
+        <li><a href="MarketCategory.html">Market</a></li>
+        <li class="dropdown">
+          <a href="#">About Us</a>
+          <div class="dropdown-content">
+            <a href="OurPeople.html">Our Team</a>
+            <a href="OurCompany.html">Our Company</a>    
+          </div>
+        </li>
+            <li> <div class="dropdown1">
+  <a href="DisplayUserServlet" class="logo1">  <i class="fa fa-bars" style="font-size:32px;">
+    </i></a>
+
+      </ul>
+    </nav>
+  </header>
 	<div class="container">
 		<h1>PRODUCTS DETAILS</h1>
+		<form action="CartView" method="get">
+        <input type="image" src="q7.jpg" alt="Submit">
+    </form>
 		<div class="card-container">
 			<%
 			List<ProductPojo> productList = (List<ProductPojo>) request.getAttribute("productList");
@@ -109,16 +213,16 @@ body {
 				<div class="card-content">
 					<h2><%=product.getProductName()%></h2>
 					
-					<p>
+					<%-- <p>
 						<strong>Product ID           :</strong>
 						<%=product.getProductId()%></p>
 							
-					<p>
-						<strong>Farmer ID            :</strong>
+					<p> --%>
+					<%-- 	<strong>Farmer ID            :</strong>
 						<%=product.getFarmerId()%></p>
-					<p>
+					<p> --%>
 					
-						<strong>Description          :</strong>
+						<p><strong>Description          :</strong>
 						<%=product.getDescription()%></p>
 					<p>
 						<strong>Price                :</strong>
@@ -134,8 +238,7 @@ body {
 						<input type="hidden" value="<%=product.getProductId()%>" name="productId">
 						<input type="hidden" value="<%=product.getFarmerId()%>" name="farmerId">
 				       <input type="hidden" value="<%=product.getPrice()%>" name="price"> 
-							<button class="#">Add to Cart</button>
-							
+					   <button class="#">Add to Cart</button>		
 					</div>
 					</form>
 				</div>
@@ -165,7 +268,7 @@ body {
         <option value="6">FLOWERS</option>
         <option value="7">GRAINS & CEREALS</option>
     </select>
-    <input type="submit" value="SEARCH LOW TO HIGH" class="button2">
+    <input type="submit" value="SORT LOW TO HIGH" class="button2">
 </form>
         		
 		  <form action="SearchCategoryHighToLow" method="get">
@@ -178,8 +281,10 @@ body {
         <option value="6">FLOWERS</option>
         <option value="7">GRAINS & CEREALS</option>
     </select>
-    <input type="submit" value="SEARCH HIGH TO LOW" class="button2">
+    <input type="submit" value="SORT HIGH TO LOW" class="button2">
 </form>
+ 
+     
 </body>
 </html>
 

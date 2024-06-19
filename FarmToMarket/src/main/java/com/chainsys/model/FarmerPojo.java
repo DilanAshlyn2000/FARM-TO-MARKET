@@ -3,7 +3,6 @@ package com.chainsys.model;
 public class FarmerPojo {
 	int id;
 	String name;
-	/* String username; */
 	String gender;
 	String DOB;
 	String phoneNumber;

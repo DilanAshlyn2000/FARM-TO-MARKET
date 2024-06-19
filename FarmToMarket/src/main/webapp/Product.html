@@ -63,32 +63,85 @@
         button[type="submit"]:hover {
             background-color: #0056b3;
         }
+        
+    .header1{
+      background-color: white;
+      color: black;
+    }
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-right: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: olive;
+    }
+      nav {
+      padding: 0px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      width: 251px;
+     
+    }
+    
     </style>
 </head>
 <body>
+ <header class="header1">
+    <nav>
+      <a href="#" class="logo">  <img src="Screenshot (188).png" alt="Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="Product.html">Add Product</a></li>
+           <li> <a href="DisplayProduct">View Product</a></li>
+      
+      </ul>
+    </nav>
+  </header>
     <div class="container">
         <h2>Insert Product</h2>
         <form action="ProductServlet" method="post" enctype="multipart/form-data" >
-           <!--  <label for="productId">Product ID:</label>
-            <input type="number" id="productId" name="productId" placeholder="Enter Product ID" required> -->
             <label for="productName">Product Name:</label>
             <input type="text" id="productName" name="productName" placeholder="Enter Product Name" required>
             <label for="farmerId">Farmer ID:</label>
-             <input type="number" id="farmerId" name="farmerId" placeholder="Enter Farmer ID" required>
+             <input type="number" id="farmerId" name="farmerId" placeholder="Enter Farmer ID" pattern="[0-9]+" required>
              <label for="photo">Upload Photo:</label>
             <input type="file" name="fileToUpload" id="fileToUpload">
-          <!--   <input type="submit" value="Upload Photo" name="submit"> -->
-           
             <label for="description">Description:</label>
-            <textarea id="description" name="description" placeholder="Enter Description" required></textarea>
+            <textarea id="description" name="description" placeholder="Enter Description" pattern="[a-zA-Z0-9]" required></textarea>
             <label for="price">Price(PER KG):</label>
-            <input type="number" id="price" name="price" step="0.01" placeholder="Enter Price" required>
+            <input type="number" id="price" name="price" step="0.01" placeholder="Enter Price" pattern="[0-9]+" required>
             <label for="stockQuantity">Stock Quantity:</label>
-            <input type="number" id="stockQuantity" name="stockQuantity" placeholder="Enter Stock Quantity" required>
-            <label for="categoryId">Category ID:</label>
+            <input type="number" id="stockQuantity" name="stockQuantity" placeholder="Enter Stock Quantity" pattern="[0-9]+" required>
+            <!-- <label for="categoryId">Category ID:</label>
             ID: 1 - Vegetables, 5 - Fruits, 6 - Flowers, 7 - Grains and Cereals
             <input type="number" id="categoryId" name="categoryId" placeholder="Enter Category ID" required>
-
+ -->
+ <label for="categoryId">Category:</label>
+<select id="categoryId" name="categoryId" required>
+    <option value="">Select Category</option>
+    <option value="1">Vegetables</option>
+    <option value="5">Fruits</option>
+    <option value="6">Flowers</option>
+    <option value="7">Nuts</option>
+</select>
              <button type="submit">Submit</button>
         </form>
     </div>

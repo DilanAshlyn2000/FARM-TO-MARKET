@@ -88,7 +88,7 @@
             <td><%= obj.getCategory()%></td>
             <td>
                 <form action="DeleteCategoryServlet" method="get">
-    <input type="hidden" value="<%= obj.getCategoryId() %>" name="categoryId"> <!-- Make sure you're passing the categoryId here -->
+    <input type="hidden" value="<%= obj.getCategoryId() %>" name="categoryId"> 
     <input type="submit" value="DELETE DETAILS" class="button1" name="action">
 </form>
             </td>
