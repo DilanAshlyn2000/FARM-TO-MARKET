@@ -45,7 +45,7 @@ public class UpdatePaidStatus extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("PaymentSuccess.html");
-	 }
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

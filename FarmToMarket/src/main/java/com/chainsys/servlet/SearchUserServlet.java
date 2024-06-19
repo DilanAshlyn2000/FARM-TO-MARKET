@@ -46,7 +46,7 @@ public class SearchUserServlet extends HttpServlet {
 		}
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("UserTable.jsp").forward(request, response);
-	 }
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

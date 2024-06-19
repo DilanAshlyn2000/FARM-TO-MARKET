@@ -51,7 +51,7 @@ public class SearchCategoryLowToHigh extends HttpServlet {
 		
 			e.printStackTrace();
 		}
-	 }
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

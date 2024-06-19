@@ -1,31 +1,26 @@
 package com.chainsys.servlet;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.chainsys.dao.FarmerDao1;
-
-import com.chainsys.model.UserPojo;
+import com.chainsys.model.ProductPojo;
 
 /**
- * Servlet implementation class DisplayFarmersServlet
+ * Servlet implementation class UpdateFarmerProduct
  */
-@WebServlet("/DisplayUserServlet")
-public class DisplayUserServlet extends HttpServlet {
+@WebServlet("/UpdateFarmerProduct")
+public class UpdateFarmerProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DisplayUserServlet() {
+	public UpdateFarmerProduct() {
 		super();
 
 	}
@@ -37,15 +32,28 @@ public class DisplayUserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		FarmerDao1 form = new FarmerDao1();
+		
+		float price = Float.parseFloat(request.getParameter("price"));
+		int stockQuantity = Integer.parseInt(request.getParameter("stock_quantity"));
+		
+		String id = request.getParameter("productId");
+		
+		int id1 = Integer.parseInt(id);
+		ProductPojo product = new ProductPojo();
+		product.setPrice(price);
+		product.setStockQuantity(stockQuantity);
+		product.setFarmerId(id1);
+		FarmerDao1 productDao = new FarmerDao1();
 		try {
-			List<UserPojo> list = form.retriveDetails();
+			productDao.updateFarmerProducts(product);
+			List<ProductPojo> list = productDao.retriveProductDetails();
 			request.setAttribute("list", list);
-			request.getRequestDispatcher("UserTable.jsp").forward(request, response);
+			request.getRequestDispatcher("ProductTable.jsp").forward(request, response);
+
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -54,20 +62,8 @@ public class DisplayUserServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		FarmerDao1 form = new FarmerDao1();
-		HttpSession session = request.getSession();
 
-		int id = (int) session.getAttribute("id");
-		try {
-			List<UserPojo> list = form.retriveDetails1(id);
+		doGet(request, response);
+	}
 
-			request.setAttribute("list", list);
-			request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
-		} catch (ClassNotFoundException | SQLException e) {
-
-			e.printStackTrace();
-		}
-   	}
 }
-
-

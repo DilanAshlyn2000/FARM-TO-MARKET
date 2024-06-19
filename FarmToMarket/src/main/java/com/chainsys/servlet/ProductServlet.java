@@ -74,7 +74,7 @@ public class ProductServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("home.html");
-	 }
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

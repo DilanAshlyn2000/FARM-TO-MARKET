@@ -60,7 +60,6 @@ public class CartServlet extends HttpServlet {
 		request.getRequestDispatcher("ProductTable1.jsp?type='categoryId'").forward(request, response);
 	}
 	
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

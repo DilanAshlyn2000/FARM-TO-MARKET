@@ -211,7 +211,7 @@
                <button>Update</button>
             </form>
             </td>
-            </tr> 
+             </tr> 
             <% } %>
         </table>
     </div>

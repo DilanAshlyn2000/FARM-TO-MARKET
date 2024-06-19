@@ -46,7 +46,7 @@ public class DeleteProduct extends HttpServlet {
 		}
 		DisplayProduct obj = new DisplayProduct();
 		obj.doGet(request, response);
-	}
+	 }
 		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

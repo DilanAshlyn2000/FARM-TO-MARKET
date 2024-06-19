@@ -58,5 +58,5 @@ public class ConfirmOrder extends HttpServlet {
 			throws ServletException, IOException {
 
 		doGet(request, response);
-	}
+	 }
 }

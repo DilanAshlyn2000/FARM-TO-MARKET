@@ -39,7 +39,7 @@ public class SearchProductCategory extends HttpServlet {
 		}
 		request.setAttribute("productList", list);
 		request.getRequestDispatcher("ProductTable1.jsp").forward(request, response);
-	 }
+	  }
 
 @Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {

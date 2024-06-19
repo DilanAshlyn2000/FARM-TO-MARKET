@@ -108,7 +108,7 @@ img.img2 {
 			<textarea id="address" name="address" rows="2"	placeholder="Enter Address"></textarea>
 
 			<%
-      // Retrieving the 'updateId' parameter from the request
+       // Retrieving the 'updateId' parameter from the request
       String updateId = request.getParameter("updateId");
     %>
 			<input type="hidden" name="updateId"

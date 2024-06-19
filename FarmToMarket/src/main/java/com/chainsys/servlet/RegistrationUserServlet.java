@@ -52,7 +52,6 @@ public class RegistrationUserServlet extends HttpServlet {
 
 		response.sendRedirect("LoginUser.html");
 	 }
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

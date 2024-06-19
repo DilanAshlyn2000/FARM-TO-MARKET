@@ -48,7 +48,7 @@ public class DeleteFarmer extends HttpServlet {
 		}
 		DisplayUserServlet obj = new DisplayUserServlet();
 		obj.doGet(request, response);
-	}
+	 }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

@@ -57,6 +57,6 @@ public class DisplayProduct extends HttpServlet {
 			throws ServletException, IOException {
 
 		doGet(request, response);
-	}
+    	}
 
 }

@@ -46,7 +46,7 @@ public class DeleteCart extends HttpServlet {
 		}
 		CartView obj = new CartView();
 		obj.doGet(request, response);
-	 }
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

@@ -210,7 +210,7 @@ nav {
 						name="id"> <input type="submit" value="DELETE DETAILS"
 						class="button1" name="action">
 				</form>
-		</tr>
+		 </tr>
 		<%
        }
     %>

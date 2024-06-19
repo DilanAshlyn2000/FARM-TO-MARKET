@@ -106,8 +106,7 @@ body {
 
     .logo {
       font-size: 1.5rem;
-      width: 251px;
-    
+      width: 251px;  
     }
     
     .content {

@@ -53,5 +53,4 @@ public class DisplayProductUserSide extends HttpServlet {
 
 		doGet(request, response);
 	}
-
 }
